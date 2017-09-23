@@ -16,13 +16,16 @@ you handle such case?
 There is a more generic way of solving this problem.
 */
 
-/* Score: 23.40 :( */
+/* Score: 79.58 :) */
 func isPalindrome(x int) bool {
-	a := x
-	y := 0
-	for a > 0 {
-		y = y*10 + a%10
-		a /= 10
+	if x < 0 || (x != 0 && x%10 == 0) {
+		return false
 	}
-	return x == y
+	reverse := 0
+	for x > reverse {
+		reverse = reverse*10 + x%10
+		x /= 10
+	}
+
+	return x == reverse || x == reverse/10
 }
