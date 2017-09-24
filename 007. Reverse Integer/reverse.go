@@ -1,5 +1,6 @@
 package reverse
 
+/* Score: 6.94 :( */
 func reverse(x int) int {
   sign := 1
   if x < 0 {
