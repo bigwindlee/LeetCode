@@ -10,3 +10,6 @@
         不可以，无法处理中间数字为0的数，比如100001。
     
     
+Time complexity : We divided the input by 10 for every iteration.
+
+Space complexity : O(1).
