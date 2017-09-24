@@ -9,6 +9,9 @@
     3）每次提取头尾两个数字，判断它们是否相等，判断后去掉头尾两个数字。
         不可以，无法处理中间数字为0的数，比如100001。
     
+
+    
 Time complexity : We divided the input by 10 for every iteration.
+
 Space complexity : O(1).
 
