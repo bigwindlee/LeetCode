@@ -11,9 +11,10 @@ func TestIsAnagram(t *testing.T) {
 		expected bool
 	}{
 		{"", "", true},
-		{"xaaddy", "xbbccy", false},
+		{"xaaddy", "xbbccy", false}, // break through sum
 		{"anagram", "nagaram", true},
-		{"hqbqo", "lsnma", false},
+		{"hqbqo", "lsnma", false},     // break through sum-of-squares
+		{"vbnxkji", "wqdtegp", false}, // break through sum-of-cubes
 	}
 
 	for i := range testdata {
