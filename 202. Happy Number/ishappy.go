@@ -8,11 +8,7 @@ func isHappy(n int) bool {
 		if slow == 1 {
 			return true
 		}
-		fast = digitSqualSum(fast)
-		if fast == 1 {
-			return true
-		}
-		fast = digitSqualSum(fast)
+		fast = digitSqualSum(digitSqualSum(fast))
 		if fast == 1 {
 			return true
 		}
