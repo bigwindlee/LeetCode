@@ -1,6 +1,7 @@
 思路：
   从一个整数数组挑出不相邻的数，使其和最大。
   要求不相邻，则分别在偶数下标和奇数下标分别统计最大和，每次统计还能及时合并上一次统计的结果，算法实现的比较巧妙。
+  该思想同样适用于实现一个非递归版的斐波那契数列。
 
 * 1）Linear recursive solution
   56 / 69 test cases passed.
@@ -32,3 +33,5 @@ func rob(nums []int) int {
 	}
 	return max(a, b)
 }
+
+ 
