@@ -1,12 +1,13 @@
 package repeatedsubstringpattern
 
+/* Score: 65.22 */
 func repeatedSubstringPattern(s string) bool {
 	l := len(s)
-	var i int // length of substring
-	for i = 1; i <= l/2; i++ {
+	for i := 1; i <= l/2; i++ { // length of substring
 		if l%i == 0 {
 			j := 1
-			for ; j < l/i; j++ { // number of substrings
+			subs := l / i // number of substrings
+			for ; j < subs; j++ {
 				k := 0
 				for k < i && s[k] == s[k+j*i] {
 					k++
@@ -15,7 +16,7 @@ func repeatedSubstringPattern(s string) bool {
 					break
 				}
 			}
-			if j == l/i {
+			if j == subs {
 				return true
 			}
 		}
