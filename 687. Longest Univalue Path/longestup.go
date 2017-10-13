@@ -5,13 +5,13 @@ import (
 )
 
 func longestUnivaluePath(root *TreeNode) int {
-	maxlen := 0
-	dfs(root, &maxlen)
-	return maxlen
+	lup := 0
+	dfs(root, &lup)
+	return lup
 }
 
 /* Returns the length of single direction Longest-Univalue-Path start from root */
-func dfs(root *TreeNode, maxlen *int) int {
+func dfs(root *TreeNode, lup *int) int {
 	if root == nil {
 		return 0
 	}
@@ -19,10 +19,10 @@ func dfs(root *TreeNode, maxlen *int) int {
 	// r is the length of single direction Longest-Univalue-Path start from right-child,
 	l, r := 0, 0
 	if root.Left != nil {
-		l = dfs(root.Left, maxlen)
+		l = dfs(root.Left, lup)
 	}
 	if root.Right != nil {
-		r = dfs(root.Right, maxlen)
+		r = dfs(root.Right, lup)
 	}
 	// resl is the length of single direction Longest-Univalue-Path start from parent go left,
 	// resr is the length of single direction Longest-Univalue-Path start from parent go right.
@@ -33,6 +33,6 @@ func dfs(root *TreeNode, maxlen *int) int {
 	if root.Right != nil && root.Val == root.Right.Val {
 		resr = r + 1
 	}
-	*maxlen = Max(*maxlen, resl+resr)
+	*lup = Max(*lup, resl+resr) // Longest-Univalue-Path
 	return Max(resl, resr)
 }
