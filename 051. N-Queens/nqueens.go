@@ -2,22 +2,22 @@ package nqueens
 
 func solveNQueens(n int) [][]string {
 	res := make([][]string, 0)
-	tmp := initialSolution(n)
+	sol := initialSolution(n)
 
-	backtrack(&res, &tmp, 0, n)
+	backtrack(&res, sol, 0, n)
 	return res
 }
 
-func backtrack(res *[][]string, tmp *[][]byte, col int, n int) {
+func backtrack(res *[][]string, sol [][]byte, col int, n int) {
 	if col == n {
-		collectSolution(res, *tmp)
+		collectSolution(res, sol)
 		return
 	}
 	for i := 0; i < n; i++ {
-		if isValid(*tmp, i, col, n) {
-			(*tmp)[i][col] = 'Q'
-			backtrack(res, tmp, col+1, n)
-			(*tmp)[i][col] = '.'
+		if isValid(sol, i, col, n) {
+			sol[i][col] = 'Q'
+			backtrack(res, sol, col+1, n)
+			sol[i][col] = '.'
 		}
 	}
 }
