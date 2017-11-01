@@ -1,3 +1,12 @@
+总结：
+  1）使用递归解决树相关的问题，必须首先定义一个递归函数（给定的函数原型不一定适合作为递归函数）；
+
+  2）递归函数的定义原则是：能够使用左右子树协作生成 parent tree；
+
+  在本例中把递归函数的返回值定义为：the length of single direction Longest-Univalue-Path；因为只有左右子树的 "single direction" Longest-Univalue-Path 才能协作生成 parent tree 的 Longest-Univalue-Path；
+
+
+
 Longest-Univalue-Path of a tree is among those Longest-Univalue-Path-Across at each node;
 Longest-Univalue-Path-Across a node is sum of { Longest-Univalue-Path-Start-At each child with same value, + 1}
 
