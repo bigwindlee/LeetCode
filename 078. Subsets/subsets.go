@@ -14,6 +14,8 @@ func subsets1(nums []int) [][]int {
 	return res
 }
 
+var inSubset = []bool{false, true}
+
 func backtrack(res *[][]int, status []bool, deep int, nums []int) {
 	if deep == len(nums) {
 		tmp := make([]int, 0)
@@ -26,11 +28,10 @@ func backtrack(res *[][]int, status []bool, deep int, nums []int) {
 		return
 	}
 
-	status[deep] = false
-	backtrack(res, status, deep+1, nums)
-
-	status[deep] = true
-	backtrack(res, status, deep+1, nums)
+	for _, val := range inSubset {
+		status[deep] = val
+		backtrack(res, status, deep+1, nums)
+	}
 }
 
 ///////////////////////////////////////////////////////////////////////////////
