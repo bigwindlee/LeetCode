@@ -12,7 +12,8 @@ nums1 and nums2 are m and n respectively.
 
 func merge(nums1 []int, m int, nums2 []int, n int) {
 	res := nums1[:m+n]
-	for i, j, k := m-1, n-1, m+n-1; k >= 0; k-- {
+	i, j := m-1, n-1
+	for k := m + n - 1; k >= 0; k-- {
 		if i < 0 {
 			copy(res[:j+1], nums2[:j+1])
 			break
