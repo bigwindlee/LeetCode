@@ -24,6 +24,7 @@ func maxSubArray_1(nums []int) int {
 }
 
 /*
+brute-force
 200 / 202 test cases passed.
 Status: Time Limit Exceeded
 */
