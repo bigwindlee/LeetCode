@@ -1,35 +1,35 @@
 package combine2
 
 import (
-	. "leetcomm"
+	"sort"
 )
 
-func combinationSum2(candidates []int, target int) [][]int {
-	res := make([][]int, 0)
-	comb := make([]int, 0)
-	status := make([]bool, len(candidates))
-	backtrack(&res, &comb, candidates, status, target)
-	return res
-}
-
-func backtrack(res *[][]int, comb *[]int, candidates []int, status []bool, target int) {
+func combinationDfs2(candidates []int, idx int, target int, buf *[]int, out *[][]int) {
 	if target < 0 {
 		return
 	}
 	if target == 0 {
-		dup := DupSlice(*comb)
-		if !IntSlice2DContainsIgnoreOrder(*res, dup) {
-			*res = append(*res, DupSlice(*comb))
-		}
+		found := make([]int, len(*buf))
+		copy(found, *buf)
+		*out = append(*out, found)
 		return
 	}
-	for i, v := range candidates {
-		if !status[i] {
-			status[i] = true
-			*comb = append(*comb, v)
-			backtrack(res, comb, candidates, status, target-v)
-			*comb = (*comb)[:len(*comb)-1]
-			status[i] = false
+	for j := idx; j < len(candidates); j++ {
+		if j == idx || candidates[j] != candidates[j-1] {
+			d := candidates[j]
+			*buf = append(*buf, d) /* push d */
+			combinationDfs2(candidates, j+1, target-d, buf, out)
+			*buf = (*buf)[:len(*buf)-1] /* pod */
 		}
 	}
+}
+
+func combinationSum2(candidates []int, target int) [][]int {
+	var buf []int
+	var out [][]int
+
+	sort.Ints(candidates)
+	combinationDfs2(candidates, 0, target, &buf, &out)
+
+	return out
 }
