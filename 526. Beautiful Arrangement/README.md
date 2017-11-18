@@ -1,20 +1,9 @@
 <B>思路</B><br/>
 
   1）典型的回溯法；要点在于设计出isValid()函数；
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-  2）depth恰好对应于index，需要理解一下！
-=======
      if !visit[i] && (i%depth == 0 || depth%i == 0)
 
   2）depth恰好对应于index，需要理解一下！//TODO
->>>>>>> master
-=======
-     if !visit[i] && (i%depth == 0 || depth%i == 0)
-
-  2）depth恰好对应于index，需要理解一下！//TODO
->>>>>>> master
 
 
 
