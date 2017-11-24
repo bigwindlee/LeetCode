@@ -17,7 +17,7 @@ func backtrack(s string, path []string, res *[][]string) {
 		if isValid(s[:i]) {
 			path = append(path, s[:i])
 			backtrack(s[i:], path, res)
-			path = (path)[:len(path)-1]
+			path = path[:len(path)-1]
 		}
 	}
 }
