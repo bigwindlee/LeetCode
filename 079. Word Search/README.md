@@ -10,6 +10,7 @@
 </p>
 
 <h3>79. Word Search</h3>
+<a href="https://leetcode.com/problems/word-search/description/">here</a>
 <div class="question-description">
  <p></p>
  <p> Given a 2D board and a word, find if the word exists in the grid. </p>
