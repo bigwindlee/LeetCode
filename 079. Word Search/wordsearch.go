@@ -44,11 +44,5 @@ func backtrack(board [][]byte, visit [][]bool, row, col int, word string, depth 
 }
 
 func isValid(board [][]byte, row, col int) bool {
-	if row < 0 || row >= len(board) {
-		return false
-	}
-	if col < 0 || col >= len(board[0]) {
-		return false
-	}
-	return true
+	return row >= 0 && row < len(board) && col >= 0 && col < len(board[0])
 }
