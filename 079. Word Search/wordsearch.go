@@ -31,11 +31,8 @@ func backtrack(board [][]byte, visit [][]bool, row, col int, word string, depth 
 	if depth == len(word) {
 		return true
 	}
-	if !isValid(board, row, col) {
-		return false
-	}
 	for i := 0; i < len(next_x); i++ {
-		if !visit[row][col] && board[row][col] == word[depth] {
+		if isValid(board, row, col) && !visit[row][col] && board[row][col] == word[depth] {
 			visit[row][col] = true
 			if backtrack(board, visit, row+next_x[i], col+next_y[i], word, depth+1) {
 				return true
