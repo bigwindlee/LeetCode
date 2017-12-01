@@ -14,8 +14,6 @@
 <p></p>
 <p>Reverse a singly linked list.</p>
 
-<p class="showspoilers"><a href="#" onclick="showSpoilers(this); return false;">click to show more hints.</a></p>
-
 <div class="spoilers" style="display: none;"><b>Hint:</b>
 <p>A linked list can be reversed either iteratively or recursively. Could you implement both?</p>
 </div><p></p>
