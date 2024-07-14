@@ -23,7 +23,7 @@
 该算法可以保证在数据流的任意时刻，每个数据被选中的概率相等。
 
 蓄水池抽样算法核心思想提炼：
-在所有遍历的下标[0, i]范围内`等概率`随机生成j，如果j落入蓄水池reservoir，则nums[i]进入蓄水池，占据reservoir[j]。
+在所有遍历过的下标[0, i]范围内`等概率`随机生成j，如果j落入蓄水池reservoir，则nums[i]进入蓄水池，占据reservoir[j]。
 */
 class Solution {
 public:
