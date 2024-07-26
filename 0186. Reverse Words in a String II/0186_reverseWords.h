@@ -4,17 +4,19 @@
 using namespace std;
 
 /*
-186. ��ת�ַ����еĵ��� II
-����һ���ַ����� s ����ת���� ���� ��˳��
-���� �Ķ���Ϊ��������һ���ɷǿո��ַ���ɵ����С�s �еĵ��ʽ����ɵ����ո�ָ���
-������Ʋ�ʵ�� ԭ�� �ⷨ����������⣬�����������Ŀռ䡣
+186. 反转字符串中的单词 II
+给你一个字符数组 s ，反转其中 单词 的顺序。
+单词 的定义为：单词是一个由非空格字符组成的序列。s 中的单词将会由单个空格分隔。
+必须设计并实现 原地 解法来解决此问题，即不分配额外的空间。
 
-˼·������
-������ת�ַ�������Ҫ���뵽����ɨ�裻�Ե���Ϊ��λ���з�ת����Ҫ����2�η�ת��
-1���Ƕ�����ķ�ת�����������ڲ�Ҳ����ת�ˣ���2�����ÿ�����ʽ��з�ת�������Ͱѵ���ԭ�ص���Ϊ�����ˡ�
+思路分析：
+见到反转字符串，就要联想到逆向扫描；以单词为单位进行反转，就要进行2次反转：
+1次是对整句的反转，这样单词内部也被反转了；第2次针对每个单词进行反转，这样就把单词原地调整为正序了。
+双指针left/right：对单词进行界定
+双指针p/q：对指定区间的字符串进行反转
 
-�ѵ㣺
-��left/rightָ��綨ÿ�����ʡ�
+难点：
+用left/right指针界定每个单词。
 */
 class Solution {
 public:
@@ -22,14 +24,14 @@ public:
     {
         int n = s.size();
         int right = n - 1;
-        int p = 0, q = right; // p/q�����ڷ�ת��˫ָ��
-        // ��һ�η�ת����������charΪ��λ���е���
+        int p = 0, q = right; // p/q是用于反转的双指针
+        // 第一次反转：对整句以char为单位进行倒序；
         while (p < q) {
             swap(s[p], s[q]);
             ++p;
             --q;
         }
-        // �ڶ��η�ת����left/right�綨ÿ�����ʣ���ÿ������ԭ�ط�ת��
+        // 第二次反转：用left/right界定每个单词，对每个单词原地反转；
         while (right >= 0) {
             while (right >= 0 && s[right] == ' ') {
                 --right;
@@ -37,17 +39,17 @@ public:
             if (right < 0) {
                 return;
             }
-            int left = right; // left��right��ʼ����ɨ��Ѱ�ҿո��ַ���2��ָ������綨һ�����ʡ�
+            int left = right; // left从right开始向左扫描寻找空格字符，2个指针合作界定一个单词。
             while (left >= 0 && s[left] != ' ') {
                 --left;
             }
             p = left + 1, q = right;
-            while (p < q) { // ��ÿ������ԭ�ط�ת
+            while (p < q) { // 对每个单词原地反转
                 swap(s[p], s[q]);
                 ++p;
                 --q;
             }
-            right = left; // ����Ѱ����һ�����ʲ����з�ת
+            right = left; // 迭代寻找下一个单词并进行反转
         }
     }
 };
