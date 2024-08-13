@@ -14,9 +14,39 @@ using namespace std;
 
 思路分析2：
 其实这是一道简单的数学题。把闭区间[0, n]中所有的数字加起来，然后依次减去nums中的数字，就会把缺失的数字暴露出来！
+思路2改进版：考虑到溢出风险，改成“边加边减”！
 
-
+思路分析3：
+见到“去除重复数字”，就要联想到“异或”操作！
 */
+
+class Solution_0268_03 { // 思路3：位运算（异或）
+public:
+    int missingNumber(vector<int>& nums)
+    {
+        int ans = 0;
+        int n = nums.size();
+        for (int i = 0; i <= n; ++i) {
+            ans ^= i;
+        }
+        for (int i : nums) {
+            ans ^= i;
+        }
+        return ans;
+    }
+
+    // 异或改进版：异或操作，一次循环。
+    int missingNumber_plus(vector<int>& nums)
+    {
+        int n = nums.size();
+        int ans = n;
+        for (int i = 0; i < n; ++i) {
+            ans ^= (i ^ nums[i]);
+        }
+        return ans;
+    }
+};
+
 class Solution_0268_02 { // 思路2：数学方法
 public:
     int missingNumber(vector<int>& nums)
@@ -29,6 +59,17 @@ public:
             sum -= i;
         }
         return sum;
+    }
+
+    // 思路2改进版：考虑到溢出风险，改成“边加边减”！
+    int missingNumber_plus(vector<int>& nums)
+    {
+        int n = nums.size();
+        int ans = n; // 下标i的分布是[0, n-1]，所以提前把n加进来。
+        for (int i = 0; i < n; ++i) {
+            ans += i - nums[i];
+        }
+        return ans;
     }
 };
 
