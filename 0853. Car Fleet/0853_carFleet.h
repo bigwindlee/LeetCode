@@ -35,7 +35,7 @@ public:
         for (auto& [pos, spd] : ps) {
             double time = static_cast<double>(target - pos) / spd;
             if (stk.empty() || time > stk.top()) {
-                // 后车的无遮挡达到时间更长，才能避免加入前车。
+                // 后车的无遮挡到达时间更长，才能避免加入前车。
                 stk.push(time);
             }
         }
