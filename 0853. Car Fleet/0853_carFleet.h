@@ -24,15 +24,15 @@ class Solution_0853 {
 public:
     int carFleet(int target, vector<int>& position, vector<int>& speed)
     {
-        map<int, int, greater<int>> ps; // 因为由近及远，所以position降序排列。
+        map<int, int, greater<int>> ps; // 因为由近及远，所以降序排列。
         for (int i = 0; i < position.size(); i++) {
             ps[position[i]] = speed[i];
         }
-        stack<float> stk; // 单调递增栈
-        for (auto& [pos, spd] : ps) { // 距离target由近及远的位置进行遍历
-            float time = float(target - pos) / spd;
+        stack<double> stk;
+        for (auto& [pos, spd] : ps) {
+            double time = static_cast<double>(target - pos) / spd;
             if (stk.empty() || time > stk.top()) {
-                // 后车的无遮挡到达时间更长，才能避免加入前车。
+                // 后车的无遮挡达到时间更长，才能避免加入前车。
                 stk.push(time);
             }
         }
