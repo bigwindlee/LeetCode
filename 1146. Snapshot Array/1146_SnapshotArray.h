@@ -22,7 +22,7 @@ public:
         return 0;
     }
 
-    int snap_id = 0; // c++ 11: 非静态数据成员初始化
+    int snap_id = 0; // c++ 11: 闈為潤鎬佹暟鎹垚鍛樺垵濮嬪寲
     unordered_map<int, map<int, int>> hash;
 };
 
