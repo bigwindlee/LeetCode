@@ -14,7 +14,7 @@ using namespace std;
 思路分析：
 括号匹配问题，stack的典型应用场景。
 */
-class Solution {
+class Solution_0020_01 {
 public:
     bool isValid(string s)
     {
@@ -36,5 +36,33 @@ public:
     bool match(char a, char b)
     {
         return (a == '(' && b == ')') || (a == '{' && b == '}') || (a == '[' && b == ']');
+    }
+};
+
+/*
+改进版：
+为了避免单独写一个函数match来判断括号是否匹配，每次遇到左括号时，直接把它的右括号队友（期望值）入栈。
+扫描字符串s遇到右括号时，比较它是否和栈顶的期望值比较，相等则匹配。
+*/
+class Solution_0020_02 {
+public:
+    bool isValid(string s)
+    {
+        stack<char> stk;
+        for (char c : s) {
+            if (c == '(') {
+                stk.push(')');
+            } else if (c == '[') {
+                stk.push(']');
+            } else if (c == '{') {
+                stk.push('}');
+            } else {
+                if (stk.empty() || stk.top() != c) {
+                    return false;
+                }
+                stk.pop();
+            }
+        }
+        return stk.empty();
     }
 };
