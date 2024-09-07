@@ -32,7 +32,7 @@ public:
         char sign = '+'; // 记住num之前的运算符；
         stack<int> stk;
 
-        s += "+0"; // 解决最后一个num的归拢难题！
+        s += "+0"; // 重要技巧：解决最后一个num的归拢难题！
         for (char c : s) {
             if (isspace(c)) {
                 continue;
