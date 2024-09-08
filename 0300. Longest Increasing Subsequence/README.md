@@ -1,20 +1,18 @@
 ### 方法二：贪心 + 二分查找
+
 确实，方法二：**贪心 + 二分查找**的解决方案，虽然在效率上较高，但理解起来可能不如动态规划直观。这个方法利用了一种优化的策略，旨在构建一个尽可能长的递增子序列。这里详细解释一下这个方法是如何工作的，以帮助您更好地理解。
 ```cpp
 int lengthOfLIS(vector<int>& nums)
 {
-	vector<int> tails;
-	for (int num : nums) {
-		auto it = lower_bound(tails.begin(), tails.end(), num);
-		if (it == tails.end())
-			tails.push_back(num);
-		else
-			*it = num;
-	}
-	for (int i : tails)
-		cout << i << "  ";
-	cout << endl;
-	return tails.size();
+    vector<int> tails;
+    for (int num : nums) {
+        auto it = lower_bound(tails.begin(), tails.end(), num);
+        if (it == tails.end())
+            tails.push_back(num);
+        else
+            *it = num;
+    }
+    return tails.size();
 }
 ```
 
