@@ -18,6 +18,35 @@
 
 - **计算顺序**：从底部向上填充 `dp` 表，即从字符串的末尾开始向前计算。
 
+![Longest Palindromic Subsequence](https://github.com/bigwindlee/LeetCode/blob/master/0516.%20Longest%20Palindromic%20Subsequence/images/0516_01.jpg "Longest Palindromic Subsequence Example")
+![Longest Palindromic Subsequence Example 2](https://github.com/bigwindlee/LeetCode/blob/master/0516.%20Longest%20Palindromic%20Subsequence/images/0516_02.jpg "Longest Palindromic Subsequence Example 2")
+
+
+```cpp
+int longestPalindromeSubseq(string s)
+{
+	int n = s.size();
+	vector<vector<int>> dp(n, vector<int>(n));
+
+	// 初始化，单字符的回文子序列长度是1
+	for (int i = 0; i < n; ++i) {
+		dp[i][i] = 1;
+	}
+
+	// 从底部向上，从左到右填表
+	for (int i = n - 1; i >= 0; --i) {
+		for (int j = i + 1; j < n; ++j) {
+			if (s[i] == s[j]) {
+				dp[i][j] = dp[i + 1][j - 1] + 2; // 左下角的方块 + 2
+			} else {
+				dp[i][j] = max(dp[i + 1][j], dp[i][j - 1]); // 左边的方块和下边的方块取大的那个
+			}
+		}
+	}
+
+	return dp[0][n - 1];
+}
+```
 ### 代码解释
 
 - **`dp` 数组的大小**：`dp` 数组的大小为 `n x n`，其中 `n` 是字符串 `s` 的长度。
