@@ -12,6 +12,9 @@ using namespace std;
 /*
 思路分析：（前缀异或）
 前缀和的思想可以推广到异或操作；
+
+知识点：
+  - 加法的逆操作是减法，乘法的逆操作是除法，异或的逆操作是异或！
 */
 class Solution {
 public:
@@ -21,16 +24,14 @@ public:
         vector<int> prefix(n);
         prefix[0] = arr[0];
         for (int i = 1; i < n; ++i) {
-            prefix[i] = prefix[i - 1] ^ arr[i];
+            prefix[i] = prefix[i - 1] ^ arr[i]; // 递推构建`前缀异或`数组
         }
 
         n = queries.size();
         vector<int> ans(n);
         for (int i = 0; i < n; ++i) {
-            if (queries[i][0] == 0)
-                ans[i] = prefix[queries[i][1]];
-            else
-                ans[i] = prefix[queries[i][1]] ^ prefix[queries[i][0] - 1];
+            int L = queries[i][0], R = queries[i][1];
+            ans[i] = prefix[R] ^ (L == 0 ? 0 : prefix[L - 1]); // 异或的逆操作是异或！
         }
         return ans;
     }
