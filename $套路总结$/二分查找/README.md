@@ -1,6 +1,6 @@
 |LeetCode|要点|
 |-------------------------------------|-------------------------------------|
-|[410. 分割数组的最大值](https://github.com/bigwindlee/LeetCode/tree/master/0410.%20Split%20Array%20Largest%20Sum)|**二分查找**搜索最大子数组和的最小可能值；**贪心算法**验证每次二分查找中间值是否是一个合法的解。|
+|[410. 分割数组的最大值][github-leetcode410]|**二分查找**搜索最大子数组和的最小可能值；**贪心算法**验证每次二分查找中间值是否是一个合法的解。|
 
 ## 什么是二分查找？
 
@@ -81,3 +81,5 @@
 ---
 
 通过掌握二分查找的基础和核心要点，可以更好地应对各种相关的算法问题。
+
+[github-leetcode410]: https://github.com/bigwindlee/LeetCode/tree/master/0410.%20Split%20Array%20Largest%20Sum
