@@ -1,6 +1,6 @@
 |LeetCode|要点|
 |----------------|----------------|
-|[647. 回文子串](https://github.com/bigwindlee/LeetCode/blob/master/0647.%20Palindromic%20Substrings/0647_countSubstrings.h)|通过区间 DP 判断每个子串是否是回文，从而统计回文子串的数量。|
+|[647. 回文子串](https://github.com/bigwindlee/LeetCode/blob/master/0647.%20Palindromic%20Substrings/0647_countSubstrings.h)|如果`s[i: j]`的首尾字符相同，那么它是不是回文，取决于它的子状态`s[i+1: j-1]`是不是回文。|
 
 ## 什么是区间 DP？
 
