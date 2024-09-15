@@ -14,4 +14,7 @@
    - `dp[m][n]` 就是我们所求的两个字符串 `text1` 和 `text2` 的最长公共子序列的长度，其中 `m` 和 `n` 分别是两个字符串的长度。
 
 5. **图解二维动态规划**
-![示例图片](https://example.com/image.jpg)
+<div align="center">
+    <img src="https://github.com/bigwindlee/LeetCode/blob/master/1143.%20Longest%20Common%20Subsequence/images/1143_01.png" alt="示例图片">
+</div>
+
