@@ -1,7 +1,7 @@
 |LeetCode|要点|
 |----------------|----------------|
-|[647. 回文子串](https://github.com/bigwindlee/LeetCode/blob/master/0647.%20Palindromic%20Substrings/0647_countSubstrings.h)|如果`s[i: j]`的首尾字符相同，那么它是不是回文，取决于它的子状态`s[i+1: j-1]`是不是回文。|
-|1143. 最长公共子序列|`dp[i][j]` 表示字符串`text1`的前`i`个字符 和 `text2`的前`j`个字符的最长公共子序列的长度|
+|[647. 回文子串][github-leetcode647]|如果`s[i: j]`的首尾字符相同，那么它是不是回文，取决于它的子状态`s[i+1: j-1]`是不是回文。|
+|[1143. 最长公共子序列][github-leetcode1143]|`dp[i][j]` 表示字符串`text1`的前`i`个字符 和 `text2`的前`j`个字符的最长公共子序列的长度。|
 
 ## 什么是区间 DP？
 
@@ -72,3 +72,6 @@
 ## 总结
 
 区间 DP 主要用于处理子区间或子数组的优化问题，问题往往依赖于对较小区间的解来推导出较大区间的解。通过合理的状态转移和边界处理，可以高效解决涉及区间的动态规划问题。
+
+[github-leetcode647]: https://github.com/bigwindlee/LeetCode/blob/master/0647.%20Palindromic%20Substrings/0647_countSubstrings.h
+[github-leetcode1143]: https://github.com/bigwindlee/LeetCode/tree/master/1143.%20Longest%20Common%20Subsequence
