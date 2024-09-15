@@ -1,6 +1,7 @@
 |LeetCode|要点|
 |----------------|----------------|
 |[647. 回文子串](https://github.com/bigwindlee/LeetCode/blob/master/0647.%20Palindromic%20Substrings/0647_countSubstrings.h)|如果`s[i: j]`的首尾字符相同，那么它是不是回文，取决于它的子状态`s[i+1: j-1]`是不是回文。|
+|1143. 最长公共子序列|`dp[i][j]` 表示字符串`text1`的前`i`个字符 和 `text2`的前`j`个字符的最长公共子序列的长度|
 
 ## 什么是区间 DP？
 
