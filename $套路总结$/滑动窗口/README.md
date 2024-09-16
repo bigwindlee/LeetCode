@@ -1,6 +1,7 @@
 |LeetCode|要点|
 |--------------------------------|--------------------------------|
 |[1052. 爱生气的书店老板][github-leetcode-1052]|用滑动窗口挽救最大数量的客户|
+|LCR 167. 招式拆解 I|同[3. 无重复字符的最长子串][github-leetcode-0003]|
 
 ### 滑动窗口（Sliding Window）简介
 
@@ -73,4 +74,5 @@
 
 滑动窗口是一种非常高效的算法，尤其适用于数组和字符串的连续子集问题。它能有效减少重复计算，尤其在求解固定或可变长度的子数组、子串等问题时尤为实用。在实际使用中，核心在于准确确定窗口的边界和滑动的条件。
 
-[github-leetcode-1052]: https://github.com/bigwindlee/LeetCode/blob/master/1052.%20Grumpy%20Bookstore%20Owner/1052_maxSatisfied.h
+[github-leetcode-1052]: ../../1052.%20Grumpy%20Bookstore%20Owner/1052_maxSatisfied.h
+[github-leetcode-0003]: ../../0003.%20Longest%20Substring%20Without%20Repeating%20Characters/0003_lengthOfLongestSubstring.h
