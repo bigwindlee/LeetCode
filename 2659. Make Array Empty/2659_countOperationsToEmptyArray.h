@@ -27,8 +27,6 @@ using namespace std;
     indexedNums[0]第n大，
     indexedNums[n-1]第一大；
     indexedNums[i] 第`n - i`大！
-
-
 */
 class Solution {
 public:
