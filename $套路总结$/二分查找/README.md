@@ -83,5 +83,5 @@
 
 通过掌握二分查找的基础和核心要点，可以更好地应对各种相关的算法问题。
 
-[github-leetcode410]: https://github.com/bigwindlee/LeetCode/tree/master/0410.%20Split%20Array%20Largest%20Sum
-[github-leetcode793]: https://github.com/bigwindlee/LeetCode/blob/master/0793.%20Preimage%20Size%20of%20Factorial%20Zeroes%20Function/0793_preimageSizeFZF.h
+[github-leetcode410]: ../../0410.%20Split%20Array%20Largest%20Sum/0410_splitArray.h
+[github-leetcode793]: ../../0793.%20Preimage%20Size%20of%20Factorial%20Zeroes%20Function/0793_preimageSizeFZF.h
