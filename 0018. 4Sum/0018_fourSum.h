@@ -30,7 +30,7 @@ public:
                 int left = j + 1;
                 int right = n - 1;
 
-                long half = static_cast<long>(nums[i]) + nums[j];
+                long half = 0L + nums[i] + nums[j];
                 while (left < right) {
                     long sum = half + nums[left] + nums[right];
                     if (sum == target) {
