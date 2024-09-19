@@ -43,6 +43,8 @@ public:
                 cnt = 0;
                 ans.clear();
             } else if (c == ']') { // 遇到']'，出栈，拼接。弹出的字符和当前的ans组成新的ans；
+                // 此处要表达的逻辑是：ans = ansStack.top() + ans * cntStack.top()
+                // 但c++不能采用乘法对字符串进行重复，只能使用循环。
                 string temp = ansStack.top();
                 ansStack.pop();
                 int repeatCnt = cntStack.top();
