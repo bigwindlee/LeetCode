@@ -32,9 +32,7 @@ public:
         stack<string> ansStack;
 
         for (char c : s) {
-            if (isdigit(c)) { // collect numbers
-                cnt = cnt * 10 + (c - '0');
-            } else if (c == '[') { // 遇到'['，把2个收集器的数据入栈，并把2个收集器清零。
+            if (c == '[') { // 遇到'['，把2个收集器的数据入栈，并把2个收集器清零。
                 cntStack.push(cnt);
                 ansStack.push(ans);
                 cnt = 0;
@@ -50,6 +48,8 @@ public:
                     temp.append(ans); // 对当前ans按照重复次数进行拼接
                 }
                 ans = temp; // 完成拼接，组成新的ans；
+            } else if (isdigit(c)) { // collect numbers
+                cnt = cnt * 10 + (c - '0');
             } else { // collect characters
                 ans.push_back(c);
             }
