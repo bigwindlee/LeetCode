@@ -1,5 +1,6 @@
-| LeetCode | Description |
+| LeetCode | 要点 |
 | ----------- | ----------- |
+| [17. 电话号码的字母组合][github-leetcode-0017] |第一维度：每个键盘数字对应的字母取值范围；第二维度：用path控制搜索深度；|
 | 40. 组合总和 II | Title |
 | [46. 全排列][github-leetcode-0046] | 每个数字只能用一次，所以需要一个used数组做标记。 |
 | LCR 083. 全排列 | 同[46. 全排列][github-leetcode-0046] |
@@ -54,4 +55,5 @@
 当你面对一个问题，需要探索所有可能的解决方案时，尤其是在解决方案涉及多个阶段的决策时，回溯法往往是一种有效的方法。它通过试错法来探索所有可能的解决方案，并利用剪枝来优化搜索过程，避免无效的探索。
 
 
+[github-leetcode-0017]: ../../0017.%20Letter%20Combinations%20of%20a%20Phone%20Number/0017_letterCombinations.h
 [github-leetcode-0046]: ../../0046.%20Permutations/0046_permute.h
