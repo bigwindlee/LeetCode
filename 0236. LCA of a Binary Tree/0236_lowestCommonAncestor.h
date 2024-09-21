@@ -12,13 +12,14 @@
 这个算法通常被称为二叉树中的最近公共祖先问题的递归解法，或者简称为LCA（Lowest Common Ancestor）算法。这是一个经典的递归算法，用于查找二叉树中两个节点的最近公共祖先。
 该方法充分利用了二叉树的递归结构，通过自顶向下地遍历树，逐层判断当前节点是否是两个目标节点的祖先。
 
-使用DFS搜索p/q节点中的任何一个，如果兄弟节点为空，则将当前节点上浮；如果当前节点和兄弟节点都不为空，说明p/q分居当前节点的左右子树，则将父节点上浮；
+使用DFS搜索p/q节点中的任何一个，搜索到则立刻回溯；
+如果左右子树都不为空，说明p/q分居当前节点的左右子树，则将当前节点上浮；否则上浮非空的子节点。
 */
 class Solution {
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q)
     {
-        // 搜索的深度：找到p/q中的任何一个节点，即返回。
+        // DFS搜索p/q节点中的任何一个，搜索到则立刻回溯；
         if (root == nullptr || root == p || root == q) {
             return root;
         }
