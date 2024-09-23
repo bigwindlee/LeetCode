@@ -3,6 +3,13 @@
 #include <vector>
 using namespace std;
 
+/*
+思路分析：双指针(left/right)    
+数组排序；固定住i，j；j右边的区间使用双指针相对运动；    
+有2个坑：
+  - i、j跳过相同数字的判断条件：`i > 0` 和 `j > i + 1` 不能少！否则会跳过不该跳的数字！
+  - 用long变量存储四数之和，int相加会返回int，可能溢出，必须前置一个`0L + `！
+*/
 class Solution {
 public:
     vector<vector<int>> fourSum(vector<int>& nums, int target)
