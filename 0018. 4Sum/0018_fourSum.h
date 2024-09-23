@@ -22,7 +22,7 @@ public:
 
             // 第二层循环，固定第二个数字
             for (int j = i + 1; j < n - 2; ++j) {
-                if (j > i + 1 && nums[j] == nums[j - 1]) { // 跳过重复的第二个数字
+                if (j > i + 1 && nums[j] == nums[j - 1]) { // 跳过重复的第二个数字；`j > i + 1`很重要！否则会跳过不该跳的数字！
                     continue;
                 }
 
