@@ -3,81 +3,62 @@
 using namespace std;
 
 /*
-468. ÑéÖ¤IPµØÖ·
-¸ø¶¨Ò»¸ö×Ö·û´® queryIP¡£Èç¹ûÊÇÓĞĞ§µÄ IPv4 µØÖ·£¬·µ»Ø "IPv4" £»Èç¹ûÊÇÓĞĞ§µÄ IPv6 µØÖ·£¬·µ»Ø "IPv6" £»Èç¹û²»ÊÇÉÏÊöÀàĞÍµÄ IP µØÖ·£¬·µ»Ø "Neither" ¡£
+468. éªŒè¯IPåœ°å€
+ç»™å®šä¸€ä¸ªå­—ç¬¦ä¸² queryIPã€‚å¦‚æœæ˜¯æœ‰æ•ˆçš„ IPv4 åœ°å€ï¼Œè¿”å› "IPv4" ï¼›å¦‚æœæ˜¯æœ‰æ•ˆçš„ IPv6 åœ°å€ï¼Œè¿”å› "IPv6" ï¼›å¦‚æœä¸æ˜¯ä¸Šè¿°ç±»å‹çš„ IP åœ°å€ï¼Œè¿”å› "Neither" ã€‚
 
-Ë¼Â··ÖÎö£º£¨Ë«Ö¸Õë£©
-IPv4µÄdelimiterÊÇ'.'
-IPv6µÄdelimiterÊÇ':'
-delimiter·Ö¸ôµÄÇø¼äÓÃË«Ö¸Õë£¨lastºÍcur£©À´¶¨Î»£»Çø¼ä³¤¶ÈÎª£ºcur - last - 1
-¼¼ÇÉ£º
-1£©lastµÄ³õÖµÎª-1£»curµÄÖÕÖµÎªqueryIP.size()£»ÕâÑù¿ÉÒÔ×¼È·µÄ·Ö¸ô³ö4¸öÇø¼ä¡£
-2£©Èç¹ûµ±Ç°ÊÇ×îºóÒ»¸öÇø¼ä£¬Ö±½Ó½«curµÄÖµÉèÖÃÎªqueryIP.size()£»
+æ€è·¯åˆ†æï¼šï¼ˆåŒæŒ‡é’ˆï¼‰
+IPv4çš„delimiteræ˜¯'.'
+IPv6çš„delimiteræ˜¯':'
+delimiteråˆ†éš”çš„åŒºé—´ç”¨åŒæŒ‡é’ˆï¼ˆlastå’Œcurï¼‰æ¥å®šä½ï¼›åŒºé—´é•¿åº¦ä¸ºï¼šcur - last - 1
+æŠ€å·§ï¼š
+1ï¼‰lastçš„åˆå€¼ä¸º-1ï¼›curçš„ç»ˆå€¼ä¸ºqueryIP.size()ï¼›è¿™æ ·å¯ä»¥å‡†ç¡®çš„åˆ†éš”å‡º4ä¸ªåŒºé—´ã€‚
+2ï¼‰å¦‚æœå½“å‰æ˜¯æœ€åä¸€ä¸ªåŒºé—´ï¼Œç›´æ¥å°†curçš„å€¼è®¾ç½®ä¸ºqueryIP.size()ï¼›
 
-ºÏ·¨Ipv4±ØĞëÂú×ãµÄÌõ¼ş£º
-1£©delimiter±ØĞë·Ö³É4¸öÇø¼ä£»
-2£©Ã¿¸öÇø¼äµÄ³¤¶È±ØĞëºÏ·¨£»
-3£©Çø¼äÄÚÃ¿¸ö×Ö·û¶¼±ØĞëÊÇÊı×Ö£»
-4£©Çø¼ä×Ö·û´®×ª³ÉÊı×Ö±ØĞë²»´óÓÚ255£»
-5£©Èç¹ûÇø¼äÊı×Ö´óÓÚ0£¬ÄÇÃ´²»ÄÜÓĞÇ°µ¼0£»
+åˆæ³•Ipv4å¿…é¡»æ»¡è¶³çš„æ¡ä»¶ï¼š
+1ï¼‰delimiterå¿…é¡»åˆ†æˆ4ä¸ªåŒºé—´ï¼›
+2ï¼‰æ¯ä¸ªåŒºé—´çš„é•¿åº¦å¿…é¡»åˆæ³•ï¼›
+3ï¼‰åŒºé—´å†…æ¯ä¸ªå­—ç¬¦éƒ½å¿…é¡»æ˜¯æ•°å­—ï¼›
+4ï¼‰åŒºé—´å­—ç¬¦ä¸²è½¬æˆæ•°å­—å¿…é¡»ä¸å¤§äº255ï¼›
+5ï¼‰å¦‚æœåŒºé—´æ•°å­—å¤§äº0ï¼Œé‚£ä¹ˆä¸èƒ½æœ‰å‰å¯¼0ï¼›
 
-ºÏ·¨IPv6±ØĞëÂú×ãµÄÌõ¼ş£º
-1£©delimiter±ØĞë·Ö³É8¸öÇø¼ä£»
-2£©Ã¿¸öÇø¼äµÄ³¤¶È±ØĞëºÏ·¨£»
-3£©Ã¿¸öÇø¼ä±ØĞëÊÇÒ»¸ö16½øÖÆ×Ö·û´®£»ÔÊĞíÇ°µ¼0£»
+åˆæ³•IPv6å¿…é¡»æ»¡è¶³çš„æ¡ä»¶ï¼š
+1ï¼‰delimiterå¿…é¡»åˆ†æˆ8ä¸ªåŒºé—´ï¼›
+2ï¼‰æ¯ä¸ªåŒºé—´çš„é•¿åº¦å¿…é¡»åˆæ³•ï¼›
+3ï¼‰æ¯ä¸ªåŒºé—´å¿…é¡»æ˜¯ä¸€ä¸ª16è¿›åˆ¶å­—ç¬¦ä¸²ï¼›å…è®¸å‰å¯¼0ï¼›
 
-ÖªÊ¶µã£º
-1£©std::isxdigit()ÅĞ¶ÏÒ»¸ö×Ö·ûÊÇ·ñÊÇºÏ·¨µÄ16½øÖÆÊı×Ö£»
+çŸ¥è¯†ç‚¹ï¼š
+1ï¼‰std::isxdigit()åˆ¤æ–­ä¸€ä¸ªå­—ç¬¦æ˜¯å¦æ˜¯åˆæ³•çš„16è¿›åˆ¶æ•°å­—ï¼›
 */
-class Solution_0468 {
+class Solution {
 public:
-    string validIPAddress(string queryIP)
-    {
+    string validIPAddress(string queryIP) {
+        int last = -1, cur; // åŒæŒ‡é’ˆ
         if (queryIP.find('.') != string::npos) {
-            // IPv4
-            int last = -1;
-            for (int i = 0; i < 4; ++i) { // IPv4ÓĞ4¸öÇø¼ä
-                int cur = (i == 3 ? queryIP.size() : queryIP.find('.', last + 1)); // ÏÂÒ»¸ödelimiter
-                if (cur == string::npos) { // Ã»ÕÒµ½delimiter£¬ËµÃ÷Çø¼äÊıÄ¿²»¶Ô£»
-                    return "Neither";
-                }
-                if (cur - last - 1 < 1 || cur - last - 1 > 3) { // Çø¼ä³¤¶È±ØĞëÊÇ[1, 3]
-                    return "Neither";
-                }
-                int addr = 0;
+            for (int i = 0; i < 4; ++i) {
+                cur = (i == 3) ? queryIP.size() : queryIP.find('.', last + 1);
+                if (cur - last - 1 < 1 || cur - last - 1 > 3) return "Neither"; // å‘ï¼šåŒºé—´ä¸ä¸ºç©ºï¼ˆæœ‰2ä¸ªdelimiteråœ¨ä¸€èµ·çš„caseï¼‰
+                if (cur - last - 1 > 1 && queryIP[last + 1] == '0') return "Neither"; // å‰å¯¼0
+                int num = 0;
                 for (int j = last + 1; j < cur; ++j) {
-                    if (!isdigit(queryIP[j])) { // Ã¿¸ö×Ö·û±ØĞë¶¼ÊÇÊı×Ö
-                        return "Neither";
-                    }
-                    addr = addr * 10 + (queryIP[j] - '0'); // Çø¼ä×Ö·û´®×ª»»³ÉÊı×Ö
+                    if (!isdigit(queryIP[j])) return "Neither"; // éæ•°å­—å­—ç¬¦
+                    num = num * 10 + (queryIP[j] - '0');
                 }
-                if (addr > 255) { // Çø¼ä×ª»»³ÉÊı×Öºó£¬²»ÄÜ´óÓÚ255
-                    return "Neither";
-                }
-                if (queryIP[last + 1] == '0' && cur - last - 1 > 1) { // Èç¹ûÇø¼äÊÇ2Î»Êı£¨»òÒÔÉÏ£©£¬ÄÇÃ´²»ÄÜÓĞÇ°µ¼0£»
-                    return "Neither";
-                }
-                last = cur; // Ë«Ö¸ÕëÇ°ÒÆ£¬Ö¸ÏòÏÂÒ»¸öÇø¼ä£»
+                if (num > 255) return "Neither";
+                last = cur; // è¿­ä»£å‡†å¤‡ä¸‹ä¸€è½®å¾ªç¯
             }
             return "IPv4";
-        } else {
-            // IPv6
-            int last = -1;
-            for (int i = 0; i < 8; ++i) { // IPv6ÓĞ8¸öÇø¼ä
-                int cur = (i == 7 ? queryIP.size() : queryIP.find(':', last + 1));
-                if (cur == string::npos) { // Ã»ÕÒµ½delimiter£¬ËµÃ÷Çø¼äÊıÄ¿²»¶Ô£»
-                    return "Neither";
+        }
+        if (queryIP.find(':') != string::npos) {
+            for (int i = 0; i < 8; ++i) {
+                cur = (i == 7) ? queryIP.size() : queryIP.find(':', last + 1);
+                if (cur - last - 1 < 1 || cur - last - 1 > 4) return "Neither"; // å‘ï¼šåŒºé—´ä¸ä¸ºç©ºï¼ˆæœ‰2ä¸ªdelimiteråœ¨ä¸€èµ·çš„caseï¼‰
+                for (int j = last + 1; j < cur; ++j) {
+                    if (!isxdigit(queryIP[j])) return "Neither"; // é16è¿›åˆ¶å­—ç¬¦
                 }
-                if (cur - last - 1 < 1 || cur - last - 1 > 4) { // Çø¼ä³¤¶È±ØĞëÊÇ[1, 4]
-                    return "Neither";
-                }
-                for (int j = last + 1; j < cur; ++j) { // Çø¼äÄÚ±éÀú
-                    if (!isxdigit(queryIP[j]))
-                        return "Neither";
-                }
-                last = cur;
+                last = cur; // è¿­ä»£å‡†å¤‡ä¸‹ä¸€è½®å¾ªç¯
             }
             return "IPv6";
         }
+        return "Neither";
     }
 };
