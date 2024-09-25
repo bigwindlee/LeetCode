@@ -30,3 +30,22 @@ public:
         return ans;
     }
 };
+
+class Solution_2 {
+public:
+    vector<vector<int>> merge(vector<vector<int>>& intervals) {
+        vector<vector<int>> ans;
+        sort(intervals.begin(), intervals.end()); // 排序很关键
+        ans.push_back(intervals[0]); // 先把数组首部元素推入，然后循环从下标1开始；
+        for (int i = 1; i < intervals.size(); ++i) {
+            if (intervals[i][0] > ans.back()[1]) {
+                ans.push_back(intervals[i]);
+            } else {
+                if (intervals[i][1] > ans.back()[1]) {
+                    ans.back()[1] = intervals[i][1];
+                }
+            }
+        }
+        return ans;
+    }
+};
