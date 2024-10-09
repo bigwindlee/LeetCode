@@ -14,36 +14,18 @@ using namespace std;
 vector数据结构的特点是常数时间内的随机访问，但是删除元素很慢，每次删除都可能引起内存中大量元素的移动。
 所以不要考虑原地合并，而是应该枚举intervals中的每个线段，取挑战ans的末尾线段。
 */
-class Solution {
-public:
-    vector<vector<int>> merge(vector<vector<int>>& intervals)
-    {
-        sort(intervals.begin(), intervals.end()); // 默认按照字典序进行排序
-        vector<vector<int>> ans;
-        for (auto& i : intervals) {
-            if (!ans.empty() && i[0] <= ans.back()[1]) { // 枚举intervals，挑战ans末尾线段；
-                ans.back()[1] = max(ans.back()[1], i[1]); // 合并，改写右边界；
-            } else {
-                ans.emplace_back(i); // 不合并，独立线段插入到末尾；
-            }
-        }
-        return ans;
-    }
-};
 
-class Solution_2 {
+class Solution {
 public:
     vector<vector<int>> merge(vector<vector<int>>& intervals) {
         vector<vector<int>> ans;
-        sort(intervals.begin(), intervals.end()); // 排序很关键
-        ans.push_back(intervals[0]); // 先把数组首部元素推入，然后循环从下标1开始；
+        sort(intervals.begin(), intervals.end());
+        ans.push_back(intervals[0]);
         for (int i = 1; i < intervals.size(); ++i) {
             if (intervals[i][0] > ans.back()[1]) {
                 ans.push_back(intervals[i]);
             } else {
-                if (intervals[i][1] > ans.back()[1]) {
-                    ans.back()[1] = intervals[i][1];
-                }
+                ans.back()[1] = max(ans.back()[1], intervals[i][1]);
             }
         }
         return ans;
