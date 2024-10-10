@@ -31,16 +31,17 @@ https://github.com/bigwindlee/LeetCode/blob/master/0031.%20Next%20Permutation/RE
 */
 class Solution {
 public:
-    void nextPermutation(vector<int>& nums) {
+    void nextPermutation(vector<int>& nums)
+    {
         int n = nums.size();
-		// 从后向前查找第一个相邻升序的元素对 (i,i+1)，满足 A[i] < A[i+1]，对应图中的数字[5, 7]
+        // 从后向前查找第一个相邻升序的元素对 (i,i+1)，满足 A[i] < A[i+1]，对应图中的数字[5, 7]
         int i = n - 1;
         while (--i >= 0 && nums[i] >= nums[i + 1]);
-		// 如果没有找到满足 A[i] < A[i+1]，退出循环是i为-1.
-		
+        // 如果没有找到满足 A[i] < A[i+1]，退出循环是i为-1.
+
         if (i >= 0) {
-			// 找到了相邻升序，在 [i+1,end) 从后向前查找第一个满足 A[i] < A[k] 的 k。
-			// 也就是从末尾往左，寻找首个大于5的数字，对应图中的6.
+            // 找到了相邻升序，在 [i+1,end) 从后向前查找第一个满足 A[i] < A[k] 的 k。
+            // 也就是从末尾往左，寻找首个大于5的数字，对应图中的6.
             int j = n;
             while (nums[--j] <= nums[i]);
             swap(nums[i], nums[j]); // 交换图中的数字5和6
