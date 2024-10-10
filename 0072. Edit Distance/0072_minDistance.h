@@ -38,6 +38,7 @@ public:
         int m = word1.size(), n = word2.size();
         vector<vector<int>> dp(m + 1, vector<int>(n + 1)); // 二维DP
 
+        // 注意：此处的i/j不是word1和word2的下标，而是word1的前i个字符/word2的前j个字符
         for (int i = 0; i <= m; ++i) {
             for (int j = 0; j <= n; ++j) {
                 if (i == 0) {
