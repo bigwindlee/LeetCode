@@ -15,6 +15,6 @@
 
 5. **图解二维动态规划**
 <div align="center">
-    <img src="https://github.com/bigwindlee/LeetCode/blob/master/1143.%20Longest%20Common%20Subsequence/images/1143_01.png" alt="示例图片">
+    <img src="images/1143_01.png" alt="示例图片">
 </div>
 
