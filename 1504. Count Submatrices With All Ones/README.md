@@ -30,9 +30,7 @@ int numSubmat(vector<vector<int>>& mat)
             }
 
             int minWidth = dp[i][j];
-            for (int k = i; k >= 0; --k) { // 行数k递减[i -> 0]，相当于以(i, j)为底座的层高递增；遍历所有层高；
-                if (dp[k][j] == 0)
-                    break;
+            for (int k = i; k >= 0 && mat[k][j] == 1; --k) { // 行数k递减[i -> 0]，相当于以(i, j)为底座的层高递增；遍历所有层高；
                 minWidth = min(minWidth, dp[k][j]); // 宽度取交集，以最窄的为准。
                 ans += minWidth; // 固定住层高后，以(i, j)为右下角的的矩形个数就等于该层高对应的宽度！（本题核心）
             }
