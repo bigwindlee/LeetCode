@@ -18,32 +18,32 @@
 ```cpp
 int numSubmat(vector<vector<int>>& mat)
 {
-	int m = mat.size(), n = mat[0].size();
-	vector<vector<int>> dp(m, vector<int>(n, 0)); // dp[i][j]表示从(i, j)开始往左，连续1的数量；也就是以(i, j)为右下角的宽度！
+    int m = mat.size(), n = mat[0].size();
+    vector<vector<int>> dp(m, vector<int>(n, 0)); // dp[i][j]表示从(i, j)开始往左，连续1的数量；也就是以(i, j)为右下角的宽度！
 
-	// 计算每个元素左侧连续的1的数量，包括自己
-	for (int i = 0; i < m; ++i) {
-		for (int j = 0; j < n; ++j) {
-			if (mat[i][j] == 1) {
-				dp[i][j] = (j == 0) ? 1 : dp[i][j - 1] + 1; // 递推计算宽度！
-			}
-		}
-	}
+    // 计算每个元素左侧连续的1的数量，包括自己
+    for (int i = 0; i < m; ++i) {
+        for (int j = 0; j < n; ++j) {
+            if (mat[i][j] == 1) {
+                dp[i][j] = (j == 0) ? 1 : dp[i][j - 1] + 1; // 递推计算宽度！
+            }
+        }
+    }
 
-	int ans = 0;
-	// 枚举(i, j)，计算以每个(i, j)为右下角的全1子矩形数量；累加到ans；
-	for (int j = 0; j < n; ++j) {
-		for (int i = 0; i < m; ++i) {
-			int minWidth = dp[i][j];
-			for (int k = i; k >= 0; --k) { // 行数k递减[i -> 0]，相当于以(i, j)为底座的层高递增；遍历所有层高；
-				if (dp[k][j] == 0)
-					break;
-				minWidth = min(minWidth, dp[k][j]); // 宽度取交集，以最窄的为准。
-				ans += minWidth; // 固定住层高后，以(i, j)为右下角的的矩形个数就等于该层高对应的宽度！（本题核心）
-			}
-		}
-	}
+    int ans = 0;
+    // 枚举(i, j)，计算以每个(i, j)为右下角的全1子矩形数量；累加到ans；
+    for (int j = 0; j < n; ++j) {
+        for (int i = 0; i < m; ++i) {
+            int minWidth = dp[i][j];
+            for (int k = i; k >= 0; --k) { // 行数k递减[i -> 0]，相当于以(i, j)为底座的层高递增；遍历所有层高；
+                if (dp[k][j] == 0)
+                    break;
+                minWidth = min(minWidth, dp[k][j]); // 宽度取交集，以最窄的为准。
+                ans += minWidth; // 固定住层高后，以(i, j)为右下角的的矩形个数就等于该层高对应的宽度！（本题核心）
+            }
+        }
+    }
 
-	return ans;
+    return ans;
 }
 ```
