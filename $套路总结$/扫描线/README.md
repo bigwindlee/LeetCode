@@ -1,6 +1,8 @@
 |LeetCode|要点|
 |--------------------------------|--------------------------------|
 |[218. 天际线问题][github-leetcode-0218]|当最大高度发生变化时，一定会遇到一个新的关键点；|
+|[850. 矩形面积 II][github-leetcode-0850]|事件排序；遍历事件的过程中关注Y线段的标注频率，累加Y线段用于求面积；|
+
 
 
 ### 扫描线算法
@@ -50,3 +52,4 @@
 
 
 [github-leetcode-0218]: ../../0218.%20The%20Skyline%20Problem/0218_getSkyline.h
+[github-leetcode-0850]: ../../0850.%20Rectangle%20Area%20II/0850_rectangleArea.h
