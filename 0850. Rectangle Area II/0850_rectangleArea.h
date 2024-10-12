@@ -1,7 +1,6 @@
-﻿#pragma once
+#pragma once
 
-#include <algorithm>
-#include <unordered_set>
+#include <set>
 #include <vector>
 using namespace std;
 
@@ -25,22 +24,18 @@ public:
 
     int rectangleArea(vector<vector<int>>& rectangles)
     {
-        unordered_set<int> yset; // 用于Y坐标去重
-        vector<vector<int>> events; // 将矩形的左边界和右边界视为“事件”
+        set<int> yset; // 用于Y坐标自动去重并排序
+        set<vector<int>> events; // 将矩形的左边界和右边界视为“事件”
         for (auto& rect : rectangles) {
             yset.insert(rect[1]);
             yset.insert(rect[3]);
-            events.push_back({ rect[0], rect[1], rect[3], 1 }); // 左边界事件
-            events.push_back({ rect[2], rect[1], rect[3], -1 }); // 右边界事件
+            events.insert({ rect[0], rect[1], rect[3], 1 }); // 左边界事件
+            events.insert({ rect[2], rect[1], rect[3], -1 }); // 右边界事件
         }
 
-        vector<int> Y(yset.begin(), yset.end());
-        sort(Y.begin(), Y.end()); // Y坐标去重并排序
-        sort(events.begin(), events.end()); // 对事件按x坐标排序
-
-        // Y坐标线段标记数组；count[i]对应线段Y[i+1] - Y[i]的标记次数
-        vector<int> count(Y.size() - 1);
-        int prev_x = events[0][0];
+        vector<int> Y(yset.begin(), yset.end()); // 转成数组，便于通过下标随机访问
+        vector<int> count(Y.size() - 1); // Y坐标线段标记数组；count[i]对应线段Y[i+1] - Y[i]的标记次数
+        int prev_x = (*events.begin())[0];
         long long area = 0;
 
         for (auto& event : events) {
