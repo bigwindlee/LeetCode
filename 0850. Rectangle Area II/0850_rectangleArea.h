@@ -35,7 +35,7 @@ public:
 
         vector<int> Y(yset.begin(), yset.end()); // 转成数组，便于通过下标随机访问
         vector<int> count(Y.size() - 1); // Y坐标线段标记数组；count[i]对应线段Y[i+1] - Y[i]的标记次数
-        int prev_x = (*events.begin())[0];
+        int prev_x = events.begin()->front(); // 第一个vector<int>中的第一个元素
         long long area = 0;
 
         for (auto& event : events) {
