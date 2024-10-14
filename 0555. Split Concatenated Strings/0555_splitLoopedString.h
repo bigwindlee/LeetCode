@@ -17,42 +17,39 @@ using namespace std;
   3. 尝试所有切割位置：对于循环字符串中的每个位置，将其视作分割点。需要分别尝试每个字符串的正序和反序形式，从不同的位置切割，形成新的字符串，并比较其字典序。
   4. 维护最大字典序字符串：在所有可能的切割方式中，维护字典序最大的那个字符串，最终返回该结果。
 
+知识点：
+  1. 字符串原地翻转；
+  2. 利用下标模运算循环遍历字符串内部的字符；
+  3. 利用迭代器遍历/分割字符串；
 */
-class Solution_0555 {
+
+class Solution {
 public:
     string splitLoopedString(vector<string>& strs)
     {
+        string ans;
         int n = strs.size();
 
         // 原字符串和反转字符串，选取字典序更大的，原地修改；
         // 除了要被剪开的字符串，剩下的字符串肯定是字典序更大的更好；
-        for (auto& s : strs) {
-            string rev(s.rbegin(), s.rend());
+        for (string& s : strs) {
+            string rev = string(s.rbegin(), s.rend());
             if (rev > s) {
                 s = rev;
             }
         }
 
-        string ans;
-        for (int i = 0; i < n; i++) {
-            string rest;
-            for (int j = i + 1; j < n; j++) {
-                rest += strs[j]; // i 之后的字符串连接在一起
+        for (int i = 0; i < n; ++i) {
+            string rest; // 除了被剪开的，把剩下的字符串拼接在一起
+            for (int j = i + 1; j < n + i; ++j) {
+                rest += strs[j % n]; // 数组下标模运算，拼接循环字符串的技巧
             }
-            for (int j = 0; j < i; j++) {
-                rest += strs[j]; // i 之前的字符串连接在一起
-            }
-
             // i 字符串要被剪开，i 字符串本身并不确定保留大字典序效果更好，所以要都试试；
-            auto begin = strs[i].begin(), end = strs[i].end(); // 试试不反转 i 字符串
-            for (auto it = begin; it != end; ++it) {
-                string tmp = string(it, end) + rest + string(begin, it);
-                ans = max(ans, tmp);
-            }
-            auto rbegin = strs[i].rbegin(), rend = strs[i].rend(); // 试试反转 i 字符串
-            for (auto it = rbegin; it != rend; ++it) {
-                string tmp = string(it, rend) + rest + string(rbegin, it);
-                ans = max(ans, tmp);
+            for (string& str : vector<string> { strs[i], string(strs[i].rbegin(), strs[i].rend()) }) {
+                for (auto it = str.begin(); it != str.end(); ++it) { // 尝试从每一个位置剪开，然后拼接
+                    string candidate = string(it, str.end()) + rest + string(str.begin(), it);
+                    ans = max(ans, candidate);
+                }
             }
         }
         return ans;
