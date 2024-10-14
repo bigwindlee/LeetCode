@@ -9,7 +9,9 @@ using namespace std;
 1. 0 < i, i + 1 < j, j + 1 < k < n - 1
 2. 子数组 (0, i - 1) ， (i + 1, j - 1) ， (j + 1, k - 1) ， (k + 1, n - 1) 的和应该相等。
 这里我们定义子数组 (l, r) 表示原数组从索引为 l 的元素开始至索引为 r 的元素。
+*/
 
+/*
 思路分析：（前缀和 + 哈希表）
 找到三个分割点 (i, j, k)，把数组砍成四截，使得四个子数组的和相等（不包括分割点）。
 见到“子数组的和”，就要联想到“前缀和”。具体步骤如下：
@@ -30,7 +32,7 @@ using namespace std;
 时间复杂度：O(n^2)
 外层遍历 j 的时间复杂度是 O(n)，内层遍历 i 和 k 的时间复杂度也是 O(n)，总的时间复杂度为 O(n^2)。
 */
-class Solution_0548 {
+class Solution {
 public:
     bool splitArray(vector<int>& nums)
     {
@@ -38,26 +40,25 @@ public:
         if (n < 7) { // 要砍成4截，至少需要7个元素。
             return false;
         }
-        // 构造前缀和数组
-        vector<int> prefixSum(n);
-        prefixSum[0] = nums[0];
+
+        vector<int> preSum(n); // 构造前缀和数组
+        preSum[0] = nums[0];
         for (int i = 1; i < n; ++i) {
-            prefixSum[i] = prefixSum[i - 1] + nums[i];
+            preSum[i] = preSum[i - 1] + nums[i];
         }
 
-        // 枚举j值
+        // 枚举j值，滑动i值和k值
         for (int j = 3; j < n - 3; ++j) {
-            unordered_set<int> sums; // 四段之中，每一小段的和。
+            unordered_set<int> segSum; // 四段之中，每一小段的和。
             for (int i = 1; i < j - 1; ++i) {
-                if (prefixSum[i - 1] == prefixSum[j - 1] - prefixSum[i]) { // 第一段和第二段
-                    sums.insert(prefixSum[i - 1]); // 只要能截断成2个和相等的子数组，就把和记录下来。
+                if (preSum[i - 1] == preSum[j - 1] - preSum[i]) { // 第一段和第二段
+                    segSum.insert(preSum[i - 1]); // 只要能截断成2个和相等的子数组，就把和记录下来。
                 }
             }
             for (int k = j + 2; k < n - 1; ++k) {
-                if (prefixSum[k - 1] - prefixSum[j] == prefixSum[n - 1] - prefixSum[k]) { // 第三段和第四段
-                    if (sums.count(prefixSum[k - 1] - prefixSum[j]) > 0) { // 这个和在平分前2段的时候出现过吗？
-                        return true;
-                    }
+                int seg3Sum = preSum[k - 1] - preSum[j]; // 第三段
+                if (seg3Sum == preSum[n - 1] - preSum[k] && segSum.count(seg3Sum) > 0) {
+                    return true; // 第三段和第四段可以平分，而且分段和在平分前2段时出现过
                 }
             }
         }
