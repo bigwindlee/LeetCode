@@ -27,34 +27,35 @@ using namespace std;
   ● 深入理解二叉树的递归和回溯。
   ● dfs前进过程中，把路径累计和复制并下发到左右子节点；在回溯过程中把所有叶子节点的路径累计和层层回馈给父节点；
 */
-class Solution_0666 {
+
+class Solution {
 public:
-    unordered_map<int, int> nodeValue; // 二叉树节点从位置到值的映射
+    unordered_map<int, int> nodes; // 从坐标到值的映射
 
     int pathSum(vector<int>& nums)
     {
         for (int num : nums) {
-            nodeValue[num / 10] = num % 10; // 前2位表示一个二维坐标(节点的深度d，节点在当前层所在的位置p)
+            // 前2位表示一个二维坐标(节点的深度d，节点在当前层所在的位置p)，后1位表示节点的值
+            nodes[num / 10] = num % 10;
         }
-        return dfs(nums[0] / 10, 0);
+        return dfs(nums[0] / 10, 0); // 累加器初始值为0
     }
 
-    // node: 节点坐标
+    // pos: 当前节点坐标
     // sum: 父节点下发的路径累计和
-    int dfs(int node, int sum)
+    int dfs(int pos, int sum)
     {
-        // 左右子节点坐标可通过当前节点坐标计算出来（d坐标 + 1，p坐标 * 2）
-        int leftChild = (node / 10 + 1) * 10 + node % 10 * 2 - 1;
-        int rightChild = leftChild + 1;
+        // （重要）计算左右子节点的坐标：可通过当前节点坐标计算出来（d坐标 + 1，p坐标 * 2）
+        int leftPos = (pos / 10 + 1) * 10 + (pos % 10) * 2 - 1;
+        int rightPos = leftPos + 1;
 
-        bool hasLeft = nodeValue.count(leftChild) > 0;
-        bool hasRight = nodeValue.count(rightChild) > 0;
-
-        sum += nodeValue[node]; // 由父节点保证当前坐标node是有效坐标
-        if (!hasLeft && !hasRight) {
+        bool hasLeft = nodes.count(leftPos) > 0;
+        bool hasRight = nodes.count(rightPos) > 0;
+        sum += nodes[pos]; // 路径和累加
+        if (!hasLeft && !hasRight) { // 叶子节点
             return sum;
         }
         // 当前路径累计和复制下发给子节点，并通过回溯归拢！
-        return (hasLeft ? dfs(leftChild, sum) : 0) + (hasRight ? dfs(rightChild, sum) : 0);
+        return (hasLeft ? dfs(leftPos, sum) : 0) + (hasRight ? dfs(rightPos, sum) : 0);
     }
 };
