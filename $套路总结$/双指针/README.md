@@ -4,6 +4,7 @@
 |[18. 四数之和][github-leetcode-0018]|先对数组排序，然后通过双循环固定两个数字，再使用双指针在剩余部分寻找两个数，使得它们的和等于目标值。|
 |287. 寻找重复数|环路检测：把数组的`value`作为下一步的`index`，可以把数组串成一个链表。|
 |[468. 验证IP地址][github-leetcode-0468]|双指针last/cur：last的初值为-1；cur的终值为queryIP.size()；这样可以对IP地址划分区间；|
+|[LCR 181. 字符串中的单词反转][github-leetcode-LCR181]|双指针扫描字符串，并用作界定符；|
 
 # 双指针总结
 **双指针**（Two Pointers）是一种常见的算法技巧，它经常用于解决数组或链表相关的问题，尤其是当你需要高效处理部分元素的组合、配对或查找问题时。双指针技巧通过使用两个指针在数据结构（通常是数组或链表）上进行遍历，从而达到减少时间复杂度的目的。
@@ -80,3 +81,4 @@ while (fast != nullptr && fast->next != nullptr) {
 [github-leetcode-0015]: ../../0015.%203Sum/0015_threeSum.h
 [github-leetcode-0018]: ../../0018.%204Sum/0018_fourSum.h
 [github-leetcode-0468]: ../../0468.%20Validate%20IP%20Address/0468_validIPAddress.h
+[github-leetcode-LCR181]: ../../LCR181.%20Reverse%20Message/LCR181_reverseMessage.h
