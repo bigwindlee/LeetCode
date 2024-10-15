@@ -1,6 +1,7 @@
 |LeetCode|要点|
 |--------------------------------|--------------------------------|
 |[215. 数组中的第K个最大元素][github-leetcode-0215]|TopK问题；size为k的小顶堆；|
+|[1046. 最后一块石头的重量][github-leetcode-1046]|优先级队列：弹出2块石头，差值push回去；|
 
 
 在 C++ 中，**`priority_queue`** 是标准模板库（STL）中的一种容器适配器，用于管理优先级队列。它的特点是：
@@ -58,3 +59,4 @@
 C++ 中的 `priority_queue` 是一个基于堆实现的高效容器，适合解决需要动态维护最大或最小值的问题。它被广泛应用于各种算法，如贪心算法、图算法（如 Dijkstra 和 Prim's）、动态排序等。通过熟练掌握 `priority_queue` 的用法，可以高效解决 LeetCode 中很多涉及堆的经典问题。
 
 [github-leetcode-0215]: ../../0215.%20Kth%20Largest%20Element%20in%20an%20Array/0215_findKthLargest.h
+[github-leetcode-1046]: ../../1046.%20Last%20Stone%20Weight/1046_lastStoneWeight.h
