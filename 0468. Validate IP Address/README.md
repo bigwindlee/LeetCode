@@ -1,4 +1,7 @@
 ## 核心算法思想
+<div align="center">
+    <img src="images/0468_001.png" alt="示例图片">
+</div>   
 
 ### 1. 判断 IP 地址类型
 - 根据 `queryIP` 字符串中是否包含 `'.'` 或 `':'` 来决定是按 **IPv4** 规则还是 **IPv6** 规则进行验证。
