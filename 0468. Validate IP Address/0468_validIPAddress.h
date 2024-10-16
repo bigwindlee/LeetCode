@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <string>
 using namespace std;
 
@@ -29,31 +29,47 @@ delimiter分隔的区间用双指针（last和cur）来定位；区间长度为�
 知识点：
 1）std::isxdigit()判断一个字符是否是合法的16进制数字；
 */
+
 class Solution {
 public:
-    string validIPAddress(string queryIP) {
-        int last = -1, cur; // 双指针
+    string validIPAddress(string queryIP)
+    {
+        int last = -1, cur; // 双指针界定IP地址分段
         if (queryIP.find('.') != string::npos) {
             for (int i = 0; i < 4; ++i) {
                 cur = (i == 3) ? queryIP.size() : queryIP.find('.', last + 1);
-                if (cur - last - 1 < 1 || cur - last - 1 > 3) return "Neither"; // 坑：区间不为空（有2个delimiter在一起的case）
-                if (cur - last - 1 > 1 && queryIP[last + 1] == '0') return "Neither"; // 前导0
+                int seglen = cur - last - 1; // 区间长度
+                if (seglen < 1 || seglen > 3) { //  可以处理区间为空，或者分界符个数不够的情况。
+                    return "Neither";
+                }
+                if (seglen > 1 && queryIP[last + 1] == '0') { // 前导0
+                    return "Neither";
+                }
                 int num = 0;
                 for (int j = last + 1; j < cur; ++j) {
-                    if (!isdigit(queryIP[j])) return "Neither"; // 非数字字符
-                    num = num * 10 + (queryIP[j] - '0');
+                    if (!isdigit(queryIP[j])) { // 非数字字符
+                        return "Neither";
+                    }
+                    num = num * 10 + queryIP[j] - '0';
                 }
-                if (num > 255) return "Neither";
+                if (num > 255) {
+                    return "Neither";
+                }
                 last = cur; // 迭代准备下一轮循环
             }
             return "IPv4";
         }
         if (queryIP.find(':') != string::npos) {
             for (int i = 0; i < 8; ++i) {
-                cur = (i == 7) ? queryIP.size() : queryIP.find(':', last + 1);
-                if (cur - last - 1 < 1 || cur - last - 1 > 4) return "Neither"; // 坑：区间不为空（有2个delimiter在一起的case）
+                cur = (i == 7) ? queryIP.size() : queryIP.find(":", last + 1);
+                int seglen = cur - last - 1;
+                if (seglen < 1 || seglen > 4) { // 可以处理区间为空，或者分界符个数不够的情况。
+                    return "Neither";
+                }
                 for (int j = last + 1; j < cur; ++j) {
-                    if (!isxdigit(queryIP[j])) return "Neither"; // 非16进制字符
+                    if (!isxdigit(queryIP[j])) { // 非16进制字符
+                        return "Neither";
+                    }
                 }
                 last = cur; // 迭代准备下一轮循环
             }
