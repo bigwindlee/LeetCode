@@ -18,9 +18,9 @@ class Solution {
 public:
     vector<vector<int>> permute(vector<int>& nums)
     {
-        vector<vector<int>> ans;
-        vector<int> path;
-        vector<bool> used(nums.size());
+        vector<vector<int>> ans; // 汇总所有排列
+        vector<int> path; // 收集每一个排列
+        vector<bool> used(nums.size()); // 回溯标记数组
         backtrack(nums, used, path, ans);
         return ans;
     }
