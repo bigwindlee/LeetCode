@@ -31,3 +31,51 @@
 - 如果所有段都通过验证，则返回 `"IPv4"` 或 `"IPv6"`。
 - 如果既不符合 **IPv4** 也不符合 **IPv6** 的规则，则返回 `"Neither"`。
 
+
+```cpp
+string validIPAddress(string queryIP)
+{
+    int last = -1, cur; // 双指针界定IP地址分段
+    if (queryIP.find('.') != string::npos) {
+        for (int i = 0; i < 4; ++i) {
+            cur = (i == 3) ? queryIP.size() : queryIP.find('.', last + 1);
+            int seglen = cur - last - 1; // 区间长度
+            if (seglen < 1 || seglen > 3) { //  可以处理区间为空，或者分界符个数不够的情况。
+                return "Neither";
+            }
+            if (seglen > 1 && queryIP[last + 1] == '0') { // 前导0
+                return "Neither";
+            }
+            int num = 0;
+            for (int j = last + 1; j < cur; ++j) {
+                if (!isdigit(queryIP[j])) { // 非数字字符
+                    return "Neither";
+                }
+                num = num * 10 + queryIP[j] - '0';
+            }
+            if (num > 255) {
+                return "Neither";
+            }
+            last = cur; // 迭代准备下一轮循环
+        }
+        return "IPv4";
+    }
+    if (queryIP.find(':') != string::npos) {
+        for (int i = 0; i < 8; ++i) {
+            cur = (i == 7) ? queryIP.size() : queryIP.find(":", last + 1);
+            int seglen = cur - last - 1;
+            if (seglen < 1 || seglen > 4) { // 可以处理区间为空，或者分界符个数不够的情况。
+                return "Neither";
+            }
+            for (int j = last + 1; j < cur; ++j) {
+                if (!isxdigit(queryIP[j])) { // 非16进制字符
+                    return "Neither";
+                }
+            }
+            last = cur; // 迭代准备下一轮循环
+        }
+        return "IPv6";
+    }
+    return "Neither";
+}
+```
