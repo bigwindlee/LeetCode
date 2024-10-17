@@ -32,7 +32,7 @@ class Solution_2571 {
 public:
     int minOperations(int n)
     {
-        if ((n & (n - 1)) == 0) {
+        if ((n & (n - 1)) == 0) { // 注意：== 运算符的优先级高于 &
             return 1;
         }
         int lb = n & -n; // 提取整数 n 的二进制表示中最低位的 1，这是一种常见的位操作技巧；
