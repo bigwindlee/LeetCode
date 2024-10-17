@@ -60,8 +60,8 @@ public:
             last = cur;
         }
 
-        for (string s : stk) { // stack不能由底向上的访问元素，此处vector的好处体现出来了。
-            ans += string("/") + s;
+        for (auto& s : stk) { // stack不能由底向上的访问元素，此处vector的好处体现出来了。
+            ans += "/" + s;
         }
         return ans.empty() ? "/" : ans; // 要考虑stk为空的情况
     }
