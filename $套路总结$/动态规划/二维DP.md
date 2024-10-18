@@ -2,6 +2,7 @@
 |----------------|----------------|
 |[5. 最长回文子串][github-leetcode-0005]|二维DP：注意填表的顺序：i从右下角向上走，j从左到右；区间内收；|
 | [72. 编辑距离][github-leetcode-72] | `dp[i][j]`表示word1的前`i`个字符转换成word2的前`j`个字符所用的步数 |
+|[174. 地下城游戏][github-leetcode-0174]|二维DP + 逆向推导；至少一点血量；|
 |[647. 回文子串][github-leetcode647]|如果`s[i: j]`的首尾字符相同，那么它是不是回文，取决于它的子状态`s[i+1: j-1]`是不是回文。|
 |[1143. 最长公共子序列][github-leetcode1143]|`dp[i][j]` 表示字符串`text1`的前`i`个字符 和 `text2`的前`j`个字符的最长公共子序列的长度。|
 |[1312. 成为回文串的最少插入次数][github-leetcode1312]|定义 dp[i][j] 为：把子串 s[i...j] 转换为回文串所需的最少插入次数。|
@@ -79,6 +80,7 @@
 
 [github-leetcode-0005]: ../../0005.%20Longest%20Palindromic%20Substring/LongestPalindrome.cpp
 [github-leetcode-72]: ../../0072.%20Edit%20Distance/0072_minDistance.h
+[github-leetcode-0174]: ../../0174.%20Dungeon%20Game/0174_calculateMinimumHP.h
 [github-leetcode647]: https://github.com/bigwindlee/LeetCode/blob/master/0647.%20Palindromic%20Substrings/0647_countSubstrings.h
 [github-leetcode1143]: https://github.com/bigwindlee/LeetCode/tree/master/1143.%20Longest%20Common%20Subsequence
 [github-leetcode1312]: https://github.com/bigwindlee/LeetCode/blob/master/1312.%20Minimum%20Insertion%20Steps/1312_minInsertions.h
