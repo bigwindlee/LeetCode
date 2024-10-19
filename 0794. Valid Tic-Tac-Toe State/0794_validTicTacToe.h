@@ -21,9 +21,10 @@ using namespace std;
 思路分析：穷举
 题意要求判断盘面是否是对弈过程中有效的状态。
 解读一下有效状态的含义：
-    1）X先手，所以`X`的数量要么和`O`相同，要么多一个；
-    2）X先手胜，则`X`的数量比`O`多一个；
-    3）O后手胜，则`X`的数量和`O`相同；
+    1）不能有2个胜利者；
+    2）X先手，所以`X`的数量要么和`O`相同，要么多一个；
+    3）X先手胜，则`X`的数量比`O`多一个；
+    4）O后手胜，则`X`的数量和`O`相同；    
 
 疑问：是否应该加一条规则：盘面不能出现某个player胜利2次的情况？
 答案：不用加。
@@ -31,7 +32,7 @@ using namespace std;
     2）其次，如果是在三横三纵中出现胜利2次，那么棋子的数目对不上，胜者6颗，败者3颗，判断无效的第一个条件就是检查棋子数目；所以这种情况已经排除了。
 
 要点：
-  ● 盘面无效的情况更容易列举
+  ● 穷举`有效`或`无效`的情况都可以；穷举`有效`的情况更容易理解；
 */
 class Solution {
 public:
@@ -45,11 +46,24 @@ public:
                 countO += (c == 'O') ? 1 : 0;
             }
         }
-        // 无效的情况更容易列举
-        bool invalid = (countX != countO && countX != countO + 1)
-            || (win(board, 'X') && countX != countO + 1)
-            || (win(board, 'O') && countX != countO);
-        return !invalid;
+
+        // 穷举有效的情况（更容易理解）
+        if (win(board, 'X') && win(board, 'O')) {
+            return false;
+        }
+        if (win(board, 'X')) {
+            return countX == countO + 1;
+        }
+        if (win(board, 'O')) {
+            return countX == countO;
+        }
+        return countX == countO || countX == countO + 1;
+
+        // 穷举`无效`的情况也是可以的
+        // bool invalid = (countX != countO && countX != countO + 1) ||
+        //                (win(board, 'X') && countX != countO + 1) ||
+        //                (win(board, 'O') && countX != countO);
+        // return !invalid;
     }
 
     // 穷举所有胜利的情况：三横三纵 + 两条对角线
