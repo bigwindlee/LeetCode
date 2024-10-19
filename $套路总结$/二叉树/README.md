@@ -2,6 +2,7 @@
 |--------------------------------|--------------------------------|
 |[106. 从中序与后序遍历序列构造二叉树][github-leetcode-0106]|postorder确定根节点，在inorder序列中查找这个根节点，把inorder分成左子树和右子树，然后递归的构建左子树和右子树！|
 |[333. 最大二叉搜索子树][github-leetcode-0333]|本题演示了使用DFS遍历二叉树，在回溯时把信息逐级上报并归拢的过程。|
+|[513. 找树左下角的值][github-leetcode-0513]|采用常规的先序遍历，把深度depth通过参数向下传递；记住并刷新depth递增时的第一个节点。|
 |[654. 最大二叉树][github-leetcode-0654]|典型的用DFS算法递归的构建二叉树；要点是用迭代器表示数组区间；
 
 
@@ -88,3 +89,4 @@ LeetCode 中有大量与二叉树（Binary Tree）相关的问题，这些问题
 [github-leetcode-0106]: ../../0106.%20Construct%20Binary%20Tree/0106_buildTree.h
 [github-leetcode-0333]: ../../0333.%20Largest%20BST%20Subtree/0333_largestBSTSubtree.h
 [github-leetcode-0654]: ../../0654.%20Maximum%20Binary%20Tree/0654_constructMaximumBinaryTree.h
+[github-leetcode-0513]: ../../0513.%20Find%20Bottom%20Left%20Tree%20Value/0513_findBottomLeftValue.h
