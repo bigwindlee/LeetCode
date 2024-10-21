@@ -1,4 +1,7 @@
 
+<div align="center">
+    <img src="images/0651_001.png" alt="示例图片">
+</div>   
 
 ```cpp
 /*
