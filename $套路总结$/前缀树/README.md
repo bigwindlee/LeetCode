@@ -1,5 +1,6 @@
 |LeetCode|要点|
 |--------------------------------|--------------------------------|
+|[208. 实现 Trie (前缀树)][github-leetcode-0208]|前缀树：每个节点增加一个isEnd标志是否是一个word的末字符；|
 |[642. 设计搜索自动补全系统][github-leetcode-0642]|前缀树：通过 Trie 来存储历史输入的句子，并根据前缀匹配提供最热门的补全建议。|
 
 
@@ -82,4 +83,5 @@
 
 
 
+[github-leetcode-0208]: ../../0208.%20Implement%20Trie/0208_Trie.h
 [github-leetcode-0642]: ../../0642.%20Design%20Search%20Autocomplete%20System/0642_AutocompleteSystem.h
