@@ -30,6 +30,7 @@ public:
         return ans;
     }
 
+    // dfs 通过返回值向父节点提供收益；父节点不接受负收益，否则不如舍弃这个节点。
     int dfs(TreeNode* root)
     {
         if (!root)
