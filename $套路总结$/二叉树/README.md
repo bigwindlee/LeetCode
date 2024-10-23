@@ -9,6 +9,7 @@
 |[235. 二叉搜索树的最近公共祖先][github-leetcode-0235]|BST: 同一阵营则尝试下降；不同阵营则立刻返回；|
 |[236. 二叉树的最近公共祖先][github-leetcode-0236]|LCA（Lowest Common Ancestor）算法；这是一个经典的递归算法；|
 |[285. 二叉搜索树中的中序后继][github-leetcode-0285]|BST: 中继后续；|
+|[297. 二叉树的序列化与反序列化][github-leetcode-0297]|二叉树DFS；|
 |[333. 最大二叉搜索子树][github-leetcode-0333]|本题演示了使用DFS遍历二叉树，在回溯时把信息逐级上报并归拢的过程。|
 |[513. 找树左下角的值][github-leetcode-0513]|采用常规的先序遍历，把深度depth通过参数向下传递；记住并刷新depth递增时的第一个节点。|
 |[654. 最大二叉树][github-leetcode-0654]|典型的用DFS算法递归的构建二叉树；要点是用迭代器表示数组区间；
@@ -106,3 +107,4 @@ LeetCode 中有大量与二叉树（Binary Tree）相关的问题，这些问题
 [github-leetcode-0285]: ../../0285.%20Inorder%20Successor%20in%20BST/0285_inorderSuccessor.h
 [github-leetcode-0235]: ../../0235.%20Lowest%20Common%20Ancestor%20of%20a%20Binary%20Search%20Tree/0235_lowestCommonAncestor.h
 [github-leetcode-0236]: ../../0236.%20LCA%20of%20a%20Binary%20Tree/0236_lowestCommonAncestor.h
+[github-leetcode-0297]: ../../0297.%20Serialize%20and%20Deserialize%20Binary%20Tree/0297_serialize.h
