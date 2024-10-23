@@ -19,25 +19,23 @@ using namespace std;
 分开处理`最大路径能否向父节点延伸的情况`。用一个全局变量记录
 */
 class Solution {
-private:
-    int ans = INT_MIN;
-
 public:
     int maxPathSum(TreeNode* root)
     {
-        dfs(root);
+        int ans = root->val; // 初值，比较的基准
+        dfs(root, ans);
         // 最上层dfs的返回值不能要，因为dfs是可以舍弃整棵树的。
         return ans;
     }
 
-    // dfs 通过返回值向父节点提供收益；父节点不接受负收益，否则不如舍弃这个节点。
-    int dfs(TreeNode* root)
+    // dfs通过返回值向父节点提供收益；父节点不接受负收益，否则不如舍弃这个节点。
+    int dfs(TreeNode* root, int& ans)
     {
         if (!root)
             return 0;
 
-        int L = dfs(root->left); // 左子树能提供的最大收益（舍弃负收益）
-        int R = dfs(root->right); // 右子树能提供的最大收益（舍弃负收益）
+        int L = dfs(root->left, ans); // 左子树能提供的最大收益（舍弃负收益）
+        int R = dfs(root->right, ans); // 右子树能提供的最大收益（舍弃负收益）
 
         // 单独处理不向父节点延伸的情况：当前节点的“内部路径和”挑战“最大路径和”
         // 难点：为什么必须包含当前节点？因为L和R都可以为空（舍弃负收益），不允许空路径存在（至少必须包含一个节点）。
@@ -52,15 +50,3 @@ public:
         return max({ 0, root->val, root->val + L, root->val + R });
     }
 };
-
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
