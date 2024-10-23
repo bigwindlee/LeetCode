@@ -4,6 +4,7 @@
 |[101. 对称二叉树][github-leetcode-0101]|如果左树的左孩子与右树的右孩子对称，左树的右孩子与右树的左孩子对称，那么这个左树和右树就对称；|
 |[102. 二叉树的层序遍历][github-leetcode-0102]|BFS算法通常需要一个队列辅助，在访问某一层的节点时，把下一层的节点加入到队列中；|
 |[106. 从中序与后序遍历序列构造二叉树][github-leetcode-0106]|postorder确定根节点，在inorder序列中查找这个根节点，把inorder分成左子树和右子树，然后递归的构建左子树和右子树！|
+|[112. 路径总和][github-leetcode-0112]|在叶子节点处拦截，不要继续深入到叶子节点的null子节点；否则，到了null子节点后无法判断父节点是否叶子节点；|
 |[333. 最大二叉搜索子树][github-leetcode-0333]|本题演示了使用DFS遍历二叉树，在回溯时把信息逐级上报并归拢的过程。|
 |[513. 找树左下角的值][github-leetcode-0513]|采用常规的先序遍历，把深度depth通过参数向下传递；记住并刷新depth递增时的第一个节点。|
 |[654. 最大二叉树][github-leetcode-0654]|典型的用DFS算法递归的构建二叉树；要点是用迭代器表示数组区间；
@@ -96,3 +97,4 @@ LeetCode 中有大量与二叉树（Binary Tree）相关的问题，这些问题
 [github-leetcode-0513]: ../../0513.%20Find%20Bottom%20Left%20Tree%20Value/0513_findBottomLeftValue.h
 [github-leetcode-0094]: ../../0094.%20Binary%20Tree%20Inorder%20Traversal/0094_inorderTraversal.h
 [github-leetcode-0102]: ../../0102.%20Binary%20Tree%20Level%20Order%20Traversal/0102_levelOrder.h
+[github-leetcode-0112]: ../../0112.%20Path%20Sum/0112_hasPathSum.h
