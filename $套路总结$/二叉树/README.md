@@ -1,6 +1,7 @@
 |LeetCode|要点|
 |--------------------------------|--------------------------------|
 |[94. 二叉树的中序遍历][github-leetcode-0094]|二叉树常规DFS；|
+|[98. 验证二叉搜索树][github-leetcode-0098]|BST中序遍历必须满足升序；|
 |[101. 对称二叉树][github-leetcode-0101]|如果左树的左孩子与右树的右孩子对称，左树的右孩子与右树的左孩子对称，那么这个左树和右树就对称；|
 |[102. 二叉树的层序遍历][github-leetcode-0102]|BFS算法通常需要一个队列辅助，在访问某一层的节点时，把下一层的节点加入到队列中；|
 |[106. 从中序与后序遍历序列构造二叉树][github-leetcode-0106]|postorder确定根节点，在inorder序列中查找这个根节点，把inorder分成左子树和右子树，然后递归的构建左子树和右子树！|
@@ -94,13 +95,13 @@ LeetCode 中有大量与二叉树（Binary Tree）相关的问题，这些问题
 * 在解决一些树问题时（如查找最近公共祖先），需要追踪父节点或通过递归传递一些额外的信息。通过额外的参数或数据结构来保存节点和父节点的关系，是解决这类问题的一种常用技巧。
 
 
-
+[github-leetcode-0094]: ../../0094.%20Binary%20Tree%20Inorder%20Traversal/0094_inorderTraversal.h
+[github-leetcode-0098]: ../../0098.%20Validate%20Binary%20Search%20Tree/0098_isValidBST.h
 [github-leetcode-0101]: ../../0101.%20Symmetric%20Tree/0101_isSymmetric.h
 [github-leetcode-0106]: ../../0106.%20Construct%20Binary%20Tree/0106_buildTree.h
 [github-leetcode-0333]: ../../0333.%20Largest%20BST%20Subtree/0333_largestBSTSubtree.h
 [github-leetcode-0654]: ../../0654.%20Maximum%20Binary%20Tree/0654_constructMaximumBinaryTree.h
 [github-leetcode-0513]: ../../0513.%20Find%20Bottom%20Left%20Tree%20Value/0513_findBottomLeftValue.h
-[github-leetcode-0094]: ../../0094.%20Binary%20Tree%20Inorder%20Traversal/0094_inorderTraversal.h
 [github-leetcode-0102]: ../../0102.%20Binary%20Tree%20Level%20Order%20Traversal/0102_levelOrder.h
 [github-leetcode-0112]: ../../0112.%20Path%20Sum/0112_hasPathSum.h
 [github-leetcode-0124]: ../../0124.%20Binary%20Tree%20Maximum%20Path%20Sum/0124_maxPathSum.h
