@@ -7,6 +7,8 @@
 |[106. 从中序与后序遍历序列构造二叉树][github-leetcode-0106]|postorder确定根节点，在inorder序列中查找这个根节点，把inorder分成左子树和右子树，然后递归的构建左子树和右子树！|
 |[112. 路径总和][github-leetcode-0112]|在叶子节点处拦截，不要继续深入到叶子节点的null子节点；否则，到了null子节点后无法判断父节点是否叶子节点；|
 |[114. 二叉树展开为链表][github-leetcode-0114]|二叉树DFS先序（根-左-右）的逆序 —— （右-左-根）|
+|[116. 填充每个节点的下一个右侧节点指针][github-leetcode-0116]|二叉树BFS；下一层入队列的顺序（先右后左）；|
+|[117. 填充每个节点的下一个右侧节点指针 II][github-leetcode-0117]|二叉树BFS；下一层入队列的顺序（先右后左）；|
 |[124. 二叉树中的最大路径和][github-leetcode-0124]|dfs通过返回值向父节点提供收益；分开处理`最大路径能否向父节点延伸的情况`。用一个全局变量记录；|
 |[235. 二叉搜索树的最近公共祖先][github-leetcode-0235]|BST: 同一阵营则尝试下降；不同阵营则立刻返回；|
 |[236. 二叉树的最近公共祖先][github-leetcode-0236]|LCA（Lowest Common Ancestor）算法；这是一个经典的递归算法；通过递归函数的返回值上浮；|
@@ -111,3 +113,5 @@ LeetCode 中有大量与二叉树（Binary Tree）相关的问题，这些问题
 [github-leetcode-0236]: ../../0236.%20LCA%20of%20a%20Binary%20Tree/0236_lowestCommonAncestor.h
 [github-leetcode-0297]: ../../0297.%20Serialize%20and%20Deserialize%20Binary%20Tree/0297_serialize.h
 [github-leetcode-0114]: ../../0114.%20Flatten%20Binary%20Tree%20to%20Linked%20List/0114_flatten.h
+[github-leetcode-0116]: ../../0116.%20Populating%20Next%20Right%20Pointers/0116_connect.h
+[github-leetcode-0117]: ../../0117.%20Populating%20Next%20Right%20Pointers%20II/0117_connect.h
