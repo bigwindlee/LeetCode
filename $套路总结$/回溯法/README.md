@@ -2,7 +2,8 @@
 | ----------- | ----------- |
 | [17. 电话号码的字母组合][github-leetcode-0017] |第一维度：每个键盘数字对应的字母取值范围；第二维度：用path控制搜索深度；|
 | 40. 组合总和 II | Title |
-| [46. 全排列][github-leetcode-0046] | 每个数字只能用一次，所以需要一个used数组做标记。 |
+|[46. 全排列][github-leetcode-0046]| 每个数字只能用一次，所以需要一个used数组做标记。 |
+|[47. 全排列 II][github-leetcode-0047]|回溯；重复数字不牵头；|
 |[140. 单词拆分 II][github-leetcode-0140]|记忆化DFS + 回溯|
 |[526. 优美的排列][github-leetcode-0526]|经典回溯 + 全排列 + 剪枝 + backtrack返回值累加|
 | LCR 083. 全排列 | 同[46. 全排列][github-leetcode-0046] |
@@ -59,5 +60,6 @@
 
 [github-leetcode-0017]: ../../0017.%20Letter%20Combinations%20of%20a%20Phone%20Number/0017_letterCombinations.h
 [github-leetcode-0046]: ../../0046.%20Permutations/0046_permute.h
+[github-leetcode-0047]: ../../0047.%20Permutations%20II/0047_permuteUnique.h
 [github-leetcode-0526]: ../../0526.%20Beautiful%20Arrangement/0526_countArrangement.h
 [github-leetcode-0140]: ../../0140.%20Word%20Break%20II/0140_wordBreak.h
