@@ -24,13 +24,10 @@ public:
         int n = s.size();
         reveseRange(s, 0, n - 1);
         int left = 0;
-        for (int i = 0; i < n; ++i) {
-            if (s[i] == ' ') {
+        for (int i = 0; i <= n; ++i) {
+            if (i == n || s[i] == ' ') {
                 reveseRange(s, left, i - 1);
                 left = i + 1;
-            }
-            if (i == n - 1) {
-                reveseRange(s, left, i);
             }
         }
     }
