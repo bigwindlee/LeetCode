@@ -2,7 +2,7 @@
 |-------------------------|---------------------------------|
 |136. 只出现一次的数字|异或操作（对比特位的模2加法）|
 |[137. 只出现一次的数字 II](https://github.com/bigwindlee/LeetCode/blob/master/0137.%20Single%20Number%20II/0137_singleNumber.h)    |统计每个比特位的1比特出现的次数，对3取模。|
-|[191. 位1的个数][github-leetcode-0191]|位运算：n&(n-1)干掉lowbit|
+|[191. 位1的个数][github-leetcode-0191]|位运算：`n&(n-1)`干掉`lowbit`|
 
 
 # C++ 位运算技巧总结
