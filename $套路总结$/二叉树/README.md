@@ -4,6 +4,7 @@
 |[98. 验证二叉搜索树][github-leetcode-0098]|BST中序遍历必须满足升序；|
 |[101. 对称二叉树][github-leetcode-0101]|如果左树的左孩子与右树的右孩子对称，左树的右孩子与右树的左孩子对称，那么这个左树和右树就对称；|
 |[102. 二叉树的层序遍历][github-leetcode-0102]|BFS算法通常需要一个队列辅助，在访问某一层的节点时，把下一层的节点加入到队列中；|
+|[103. 二叉树的锯齿形层序遍历][github-leetcode-0103]|二叉树BFS；下一层入队列的顺序左右交替；|
 |[106. 从中序与后序遍历序列构造二叉树][github-leetcode-0106]|postorder确定根节点，在inorder序列中查找这个根节点，把inorder分成左子树和右子树，然后递归的构建左子树和右子树！|
 |[112. 路径总和][github-leetcode-0112]|在叶子节点处拦截，不要继续深入到叶子节点的null子节点；否则，到了null子节点后无法判断父节点是否叶子节点；|
 |[114. 二叉树展开为链表][github-leetcode-0114]|二叉树DFS先序（根-左-右）的逆序 —— （右-左-根）|
@@ -115,3 +116,4 @@ LeetCode 中有大量与二叉树（Binary Tree）相关的问题，这些问题
 [github-leetcode-0114]: ../../0114.%20Flatten%20Binary%20Tree%20to%20Linked%20List/0114_flatten.h
 [github-leetcode-0116]: ../../0116.%20Populating%20Next%20Right%20Pointers/0116_connect.h
 [github-leetcode-0117]: ../../0117.%20Populating%20Next%20Right%20Pointers%20II/0117_connect.h
+[github-leetcode-0103]: ../../0103.%20Binary%20Tree%20Zigzag%20Level%20Order%20Traversal/0103_zigzagLevelOrder.h
