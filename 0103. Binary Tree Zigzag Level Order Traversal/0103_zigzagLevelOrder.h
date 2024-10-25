@@ -1,45 +1,40 @@
-#pragma once
+ï»¿#pragma once
 #include "TreeNode.h"
 #include <queue>
 #include <vector>
 using namespace std;
 
-/*
-¶ş²æÊ÷µÄ²ã´Î±éÀú£¬Ê¹ÓÃbfsËã·¨£¬ĞèÒªÒ»¸ö¶ÓÁĞ¸¨Öú¡£
-¾â³İĞÎ²ãĞò±éÀú£ºÒ»µãĞ¡»¨Ñù£¬Ã¿¸ôÒ»²ãreverseÒ»ÏÂ¡£
+/**
+103. äºŒå‰æ ‘çš„é”¯é½¿å½¢å±‚åºéå†
+ç»™ä½ äºŒå‰æ ‘çš„æ ¹èŠ‚ç‚¹ root ï¼Œè¿”å›å…¶èŠ‚ç‚¹å€¼çš„ é”¯é½¿å½¢å±‚åºéå† ã€‚ï¼ˆå³å…ˆä»å·¦å¾€å³ï¼Œå†ä»å³å¾€å·¦è¿›è¡Œä¸‹ä¸€å±‚éå†ï¼Œä»¥æ­¤ç±»æ¨ï¼Œå±‚ä¸å±‚ä¹‹é—´äº¤æ›¿è¿›è¡Œï¼‰ã€‚
 */
-class Solution_0103 {
+
+/*
+æ€è·¯åˆ†æï¼šäºŒå‰æ ‘BFS
+äºŒå‰æ ‘çš„å¸¸è§„BFSï¼Œåªä¸è¿‡éœ€è¦ä¸€ä¸ªåè½¬æ ‡å¿—ï¼Œå®ç°æ¯ä¸€å±‚çš„äº¤æ›¿åè½¬ï¼Œå½¢æˆé”¯é½¿å½¢å±‚åºéå†ã€‚
+*/
+class Solution {
 public:
     vector<vector<int>> zigzagLevelOrder(TreeNode* root)
     {
-        if (!root)
-            return {};
-
         vector<vector<int>> ans;
-        bool flag = false; // ±êÖ¾£¬Ã¿¸ôÒ»²ãreverseÒ»ÏÂ¡£
-        queue<TreeNode*> q;
+        if (!root) return ans;
+        queue<TreeNode*> q; // BFSéœ€è¦æŠŠä¸‹ä¸€å±‚å…¥é˜Ÿåˆ—
         q.push(root);
+        bool order = false; // åè½¬æ ‡å¿—ï¼Œé¦–å±‚ä¸åè½¬
         while (!q.empty()) {
-            vector<int> layer;
-            int n = q.size(); // ÕâÒ»²ãµÄsize¹Ì¶¨ÏÂÀ´£¬ÒòÎªÖ®ºó´¦ÀíÃ¿¸ö½ÚµãÊ±Æä×óÓÒ×Ó½Úµã»áÈë¶ÓÁĞ£¬¸Ä±ä¶ÓÁĞ´óĞ¡¡£
-            for (int i = 0; i < n; ++i) {
-                TreeNode* node = q.front();
+            int n = q.size(); // ç¼“å­˜é˜Ÿåˆ—å¤§å°ï¼Œå› ä¸ºé˜Ÿåˆ—å¤§å°ä¼šåŠ¨æ€å˜åŒ–
+            vector<int> path; // æ”¶é›†æ¯ä¸€å±‚çš„å…ƒç´ 
+            while (n--) {
+                TreeNode* cur = q.front();
                 q.pop();
-
-                // ¾â³İĞÎ²ãĞò±éÀú£ºÏÈ´Ó×óÍùÓÒ£¬ÔÙ´ÓÓÒÍù×ó½øĞĞÏÂÒ»²ã±éÀú£¬ÒÔ´ËÀàÍÆ£¬²ãÓë²ãÖ®¼ä½»Ìæ½øĞĞ
-                if (flag)
-                    layer.insert(layer.begin(), node->val);
-                else
-                    layer.emplace_back(node->val);
-
-                // ×Ó½ÚµãÈë¶ÓÁĞ
-                if (node->left)
-                    q.push(node->left);
-                if (node->right)
-                    q.push(node->right);
+                path.push_back(cur->val);
+                if (cur->left) q.push(cur->left);
+                if (cur->right) q.push(cur->right);
             }
-            flag = !flag;
-            ans.emplace_back(layer);
+            if (order) reverse(path.begin(), path.end());
+            ans.push_back(path);
+            order = !order; // æ¯ä¸€å±‚äº¤æ›¿åè½¬ï¼Œé”¯é½¿å½¢å±‚åºéå†
         }
         return ans;
     }
