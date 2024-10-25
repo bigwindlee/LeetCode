@@ -19,6 +19,7 @@ public:
     {
         vector<vector<int>> ans;
         if (!root) return ans;
+        
         queue<TreeNode*> q; // BFS需要把下一层入队列
         q.push(root);
         bool order = false; // 反转标志，首层不反转
