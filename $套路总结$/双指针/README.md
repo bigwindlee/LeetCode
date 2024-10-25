@@ -3,6 +3,7 @@
 |[15. 三数之和][github-leetcode-0015]|先对数组排序，然后固定一个数字，再使用双指针在剩余部分寻找两个数，使得它们的和等于目标值。|
 |[18. 四数之和][github-leetcode-0018]|先对数组排序，然后通过双循环固定两个数字，再使用双指针在剩余部分寻找两个数，使得它们的和等于目标值。|
 |[71. 简化路径][github-leetcode-0071]|双指针+栈：使用双指针界定由'/'分割的segment；用栈处理两个点 '..' 将目录切换到上一级；|
+|[88. 合并两个有序数组][github-leetcode-0088]|三指针逆向扫描/填充|
 |287. 寻找重复数|环路检测：把数组的`value`作为下一步的`index`，可以把数组串成一个链表。|
 |[468. 验证IP地址][github-leetcode-0468]|双指针last/cur：last的初值为-1；cur的终值为queryIP.size()；这样可以对IP地址划分区间；|
 |[LCR 181. 字符串中的单词反转][github-leetcode-LCR181]|双指针扫描字符串，并用作界定符；|
@@ -84,3 +85,4 @@ while (fast != nullptr && fast->next != nullptr) {
 [github-leetcode-0071]: ../../0071.%20Simplify%20Path/0071_simplifyPath.h
 [github-leetcode-0468]: ../../0468.%20Validate%20IP%20Address/0468_validIPAddress.h
 [github-leetcode-LCR181]: ../../LCR181.%20Reverse%20Message/LCR181_reverseMessage.h
+[github-leetcode-0088]: ../../0088.%20Merge%20Sorted%20Array/0088_merge.h
