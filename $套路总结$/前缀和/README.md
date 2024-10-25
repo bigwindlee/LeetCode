@@ -1,5 +1,6 @@
 |LeetCode|Description|
 |-------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
+|[238. 除自身以外数组的乘积][github-leetcode-0238]|前缀积 * 后缀积|
 | [548. 将数组分割成和相等的子数组][github-leetcode-0548] |找到三个分割点 (i, j, k)，把数组砍成四截，固定住j值，然后双指针i/k分别在2段内扫描；|
 |[1310. 子数组异或查询](https://github.com/bigwindlee/LeetCode/blob/master/1310.%20XOR%20Queries%20of%20a%20Subarray/1310_xorQueries.h) | 前缀异或（前缀和的思想推广到异或操作） |
 |[1983. 范围和相等的最宽索引对][github-leetcode-1983]|2个数组差值的前缀和；|
@@ -75,3 +76,4 @@ int main() {
 
 [github-leetcode-0548]: ../../0548.%20Split%20Array%20with%20Equal%20Sum/0548_splitArray.h
 [github-leetcode-1983]: ../../1983.%20Widest%20Pair%20of%20Indices/1983_widestPairOfIndices.h
+[github-leetcode-0238]: ../../0238.%20Product%20of%20Array%20Except%20Self/0238_productExceptSelf.h
