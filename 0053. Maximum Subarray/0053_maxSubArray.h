@@ -22,7 +22,7 @@ class Solution {
 public:
     int maxSubArray(vector<int>& nums)
     {
-        int ans = INT_MIN, sum = 0;
+        int ans = nums[0], sum = 0;
         for (int i : nums) {
             sum = i + max(0, sum); // DP递推公式：上一轮的sum，正收益则连接，负收益则舍弃（重新计算连续子数组）。
             ans = max(ans, sum); // `以当前节点结尾`的连续子数组累加和，挑战最大值。
