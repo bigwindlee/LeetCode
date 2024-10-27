@@ -4,6 +4,7 @@
 |[30. 串联所有单词的子串][github-leetcode-0030]|以i指针为起点，subLen为窗口长度，每次向右滑动wordLen，右边新加入一个word，左边退出一个word，以此更新哈希表differ；|
 |[567. 字符串的排列][github-leetcode-0567]|定长滑动窗口内的字符频率统计；哈希表删除频率降为0的key；|
 |[1052. 爱生气的书店老板][github-leetcode-1052]|用滑动窗口挽救最大数量的客户；遍历数组用`i`顶着保护罩minutes的右边界往前走；|
+|[1984. 学生分数的最小差值][github-leetcode-1984]|长度为k的定长滑动窗口；|
 |LCR 167. 招式拆解 I|同[3. 无重复字符的最长子串][github-leetcode-0003]|
 
 ### 滑动窗口（Sliding Window）简介
@@ -82,3 +83,4 @@
 [github-leetcode-0030]: ../../0030.%20Substring%20with%20Concatenation%20of%20All%20Words/0030_findSubstring.h
 [github-leetcode-1052]: ../../1052.%20Grumpy%20Bookstore%20Owner/1052_maxSatisfied.h
 [github-leetcode-0567]: ../../0567.%20Permutation%20in%20String/0567_checkInclusion.h
+[github-leetcode-1984]: ../../1984.%20Minimum%20Difference/1984_minimumDifference.h
