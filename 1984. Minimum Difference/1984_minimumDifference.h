@@ -13,6 +13,7 @@ using namespace std;
 /*
 思路分析：定长滑动窗口
 长度为k的定长滑动窗口；
+但凡是定长滑动窗口，可以直接计算出窗口左右下标的初始值；
 */
 class Solution {
 public:
