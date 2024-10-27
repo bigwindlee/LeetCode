@@ -46,8 +46,6 @@ public:
             }
             ListNode* newNode = new ListNode(carry % 10, ans);
             ans = newNode;
-
-            // 刷新carry和sum，为下次循环做准备。
             carry /= 10;
         }
 
