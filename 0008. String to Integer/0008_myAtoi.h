@@ -13,7 +13,6 @@ public:
         }
 
         // 处理符号
-        bool isPositive = true;
         if (i < n && (s[i] == '+' || s[i] == '-')) {
             sign = (s[i] == '+') ? 1 : -1;
             ++i;
