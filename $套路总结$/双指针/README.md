@@ -4,6 +4,7 @@
 |[18. 四数之和][github-leetcode-0018]|先对数组排序，然后通过双循环固定两个数字，再使用双指针在右边区间寻找两个数，使得它们的和等于目标值。|
 |[26. 删除有序数组中的重复项][github-leetcode-0026]|双指针：指针`i`指示回填；指针`j`寻找不同于左边的数字，从数组头部依次回填；|
 |[71. 简化路径][github-leetcode-0071]|双指针+栈：使用双指针界定由'/'分割的segment；用栈处理两个点 '..' 将目录切换到上一级；|
+|[75. 颜色分类][github-leetcode-0075]|一趟扫描，扫描过程中通过通过2个指针p0和p2定位，把0往前搬运，把2往后搬运。；|
 |[88. 合并两个有序数组][github-leetcode-0088]|三指针逆向扫描/填充|
 |287. 寻找重复数|环路检测：把数组的`value`作为下一步的`index`，可以把数组串成一个链表。|
 |[468. 验证IP地址][github-leetcode-0468]|双指针last/cur：last的初值为-1；cur的终值为queryIP.size()；这样可以对IP地址划分区间；|
@@ -88,3 +89,4 @@ while (fast != nullptr && fast->next != nullptr) {
 [github-leetcode-LCR181]: ../../LCR181.%20Reverse%20Message/LCR181_reverseMessage.h
 [github-leetcode-0088]: ../../0088.%20Merge%20Sorted%20Array/0088_merge.h
 [github-leetcode-0026]: ../../0026.%20Remove%20Duplicates%20from%20Sorted%20Array/0026_removeDuplicates.h
+[github-leetcode-0075]: ../../0075.%20Sort%20Colors/0075_sortColors.h
