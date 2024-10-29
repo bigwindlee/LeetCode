@@ -16,7 +16,7 @@ using namespace std;
 本题要求以单词为单位进行顺序颠倒，那么就涉及到单词的界定；
 使用双指针：
     right: 从末尾开始逆向扫描，指向一个单词的末字符；
-    left: 寻找right所指向单词的最边界；
+    left: 寻找right所指向单词的左边界；
 从而可以用[left+1, right]区间界定一个单词！
 */
 class Solution {
