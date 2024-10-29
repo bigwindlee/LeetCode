@@ -1,55 +1,55 @@
-#pragma once
+ï»¿#pragma once
 #include <vector>
 using namespace std;
 
 /*
-200. µºÓìÊýÁ¿
-¸øÄãÒ»¸öÓÉ '1'£¨Â½µØ£©ºÍ '0'£¨Ë®£©×é³ÉµÄµÄ¶þÎ¬Íø¸ñ£¬ÇëÄã¼ÆËãÍø¸ñÖÐµºÓìµÄÊýÁ¿¡£
-µºÓì×ÜÊÇ±»Ë®°üÎ§£¬²¢ÇÒÃ¿×ùµºÓìÖ»ÄÜÓÉË®Æ½·½ÏòºÍ/»òÊúÖ±·½ÏòÉÏÏàÁÚµÄÂ½µØÁ¬½ÓÐÎ³É¡£
-´ËÍâ£¬Äã¿ÉÒÔ¼ÙÉè¸ÃÍø¸ñµÄËÄÌõ±ß¾ù±»Ë®°üÎ§¡£
+200. å²›å±¿æ•°é‡
+ç»™ä½ ä¸€ä¸ªç”± '1'ï¼ˆé™†åœ°ï¼‰å’Œ '0'ï¼ˆæ°´ï¼‰ç»„æˆçš„çš„äºŒç»´ç½‘æ ¼ï¼Œè¯·ä½ è®¡ç®—ç½‘æ ¼ä¸­å²›å±¿çš„æ•°é‡ã€‚
+å²›å±¿æ€»æ˜¯è¢«æ°´åŒ…å›´ï¼Œå¹¶ä¸”æ¯åº§å²›å±¿åªèƒ½ç”±æ°´å¹³æ–¹å‘å’Œ/æˆ–ç«–ç›´æ–¹å‘ä¸Šç›¸é‚»çš„é™†åœ°è¿žæŽ¥å½¢æˆã€‚
+æ­¤å¤–ï¼Œä½ å¯ä»¥å‡è®¾è¯¥ç½‘æ ¼çš„å››æ¡è¾¹å‡è¢«æ°´åŒ…å›´ã€‚
+*/
 
-Ë¼Â··ÖÎö£º
-µºÓìÎÊÌâÊÇ¾­µäµÄdfs£¬ËüµÄÌØµãÊÇ£¬Ã¿ÌõËÑË÷Â·¾¶¶¼ÓÐ¶ÀÁ¢µÄÆðµã¡£
+/*
+æ€è·¯åˆ†æžï¼š
+å…¸åž‹çš„dfsï¼›åœ¨æœç´¢çš„è¿‡ç¨‹ä¸­å°†å°å²›ç¿»è½¬ï¼Œé¿å…visitedçŸ©é˜µçš„å¼€é”€ï¼›
 
-ÄÑµã£º
-  - ¶Ô¶þÎ¬Êý×éÖ´ÐÐdfs£¬Ã¿ÌõËÑË÷Â·¾¶¶¼ÊÇÓÐ¶ÀÁ¢ÆðµãµÄ¡£¶ÔÓÐÐ§µÄÆðµã½øÐÐ¼ÆÊý£¬¾ÍÊÇµºÓìµÄÊýÁ¿¡£
-
-ÖªÊ¶µã£º 
-  - ÔõÑù³õÊ¼»¯Ò»¸ö¶þÎ¬vectorÊý×é£¿
-
-ÓÅ»¯Ë¼Â·£º
-  - ¿Õ¼äÓÅ»¯£ºÀûÓÃgrid±¾Éí×ö±ê¼Ç£¬ÕâÑù¾Í²»ÐèÒªvisitedÊý×éÁË¡£°ÑÒÑ¾­·ÃÎÊ¹ýµÄ'1'ÔªËØÉèÖÃÎª'X'¡£
+è¦ç‚¹ï¼š
+    1ï¼‰å®šä¹‰æœç´¢æ–¹å‘ï¼›éåŽ†æœç´¢æ–¹å‘ï¼›
+    2ï¼‰é€’å½’lambdaï¼›æ˜¾ç¤ºæŒ‡å®šè¿”å›žç±»åž‹ï¼›
+    3ï¼‰å¯¹äºŒç»´æ•°ç»„æ‰§è¡Œdfsï¼Œæ¯æ¡æœç´¢è·¯å¾„éƒ½æ˜¯æœ‰ç‹¬ç«‹èµ·ç‚¹çš„ã€‚å¯¹æœ‰æ•ˆçš„èµ·ç‚¹è¿›è¡Œè®¡æ•°ï¼Œå°±æ˜¯å²›å±¿çš„æ•°é‡ã€‚
 */
 class Solution {
 public:
     int numIslands(vector<vector<char>>& grid)
     {
+        int m = grid.size(), n = grid[0].size();
+
+        // å®šä¹‰æœç´¢æ–¹å‘
+        vector<pair<int, int>> direct { { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 } };
+
+        // ç”¨é€’å½’lambdaå®šä¹‰dfs
+        // æ— æ³•æŽ¨å¯¼å‡ºlambdaè¡¨è¾¾å¼çš„è¿”å›žç±»åž‹çš„æ—¶å€™ï¼Œå¿…é¡»æ˜Žç¡®æŒ‡å®šï¼›
+        // ä¸‡èƒ½å¼•ç”¨ auto&& selfï¼šå…è®¸ lambda è¡¨è¾¾å¼é€’å½’åœ°å¼•ç”¨è‡ªå·±ã€‚
+        auto dfs = [&](auto&& self, int i, int j) -> void {
+            grid[i][j] = '0'; // æ ‡è®°ä¸ºå·²è®¿é—®ï¼Œæœ¬é¢˜æ— éœ€å›žæº¯ï¼ˆæ¢å¤çŠ¶æ€ï¼‰
+            for (auto [dx, dy] : direct) { // éåŽ†æœç´¢æ–¹å‘
+                int ni = i + dx;
+                int nj = j + dy;
+                if (ni >= 0 && ni < m && nj >= 0 && nj < n && grid[ni][nj] == '1') {
+                    self(self, ni, nj);
+                }
+            }
+        };
+
         int ans = 0;
-        int m = grid.size();
-        int n = grid[0].size();
-        vector<vector<bool>> visited(m, vector<bool>(n, false));
         for (int i = 0; i < m; ++i) {
             for (int j = 0; j < n; ++j) {
-                // Ã¿ÌõËÑË÷Â·¾¶ÓÐ¶ÀÁ¢µÄÆðµã£¬¼ÆËãÓÐÐ§ÆðµãµÄ¸öÊý¡£
-                if (grid[i][j] == '1' && !visited[i][j]) {
-                    dfs(grid, m, n, i, j, visited);
+                if (grid[i][j] == '1') {
+                    dfs(dfs, i, j);
                     ++ans;
                 }
             }
         }
         return ans;
-    }
-
-    void dfs(vector<vector<char>>& grid, int m, int n, int i, int j, vector<vector<bool>>& visited)
-    {
-        if (i < 0 || i >= m || j < 0 || j >= n || grid[i][j] == '0' || visited[i][j]) {
-            return;
-        }
-        visited[i][j] = true;
-        // 4¸öËÑË÷·½Ïò£¨ÉÏÏÂ×óÓÒ£©
-        dfs(grid, m, n, i - 1, j, visited);
-        dfs(grid, m, n, i + 1, j, visited);
-        dfs(grid, m, n, i, j - 1, visited);
-        dfs(grid, m, n, i, j + 1, visited);
     }
 };
