@@ -6,6 +6,7 @@
 |[71. 简化路径][github-leetcode-0071]|双指针+栈：使用双指针界定由'/'分割的segment；用栈处理两个点 '..' 将目录切换到上一级；|
 |[75. 颜色分类][github-leetcode-0075]|一趟扫描，扫描过程中通过通过2个指针p0和p2定位，把0往前搬运，把2往后搬运。；|
 |[88. 合并两个有序数组][github-leetcode-0088]|三指针逆向扫描/填充|
+|[165. 比较版本号][github-leetcode-0165]|双指针：以点号界定区间并提取数字|
 |287. 寻找重复数|环路检测：把数组的`value`作为下一步的`index`，可以把数组串成一个链表。|
 |[468. 验证IP地址][github-leetcode-0468]|双指针last/cur：last的初值为-1；cur的终值为queryIP.size()；这样可以对IP地址划分区间；|
 |[LCR 181. 字符串中的单词反转][github-leetcode-LCR181]|双指针扫描字符串，并用作界定符；|
@@ -90,3 +91,4 @@ while (fast != nullptr && fast->next != nullptr) {
 [github-leetcode-0088]: ../../0088.%20Merge%20Sorted%20Array/0088_merge.h
 [github-leetcode-0026]: ../../0026.%20Remove%20Duplicates%20from%20Sorted%20Array/0026_removeDuplicates.h
 [github-leetcode-0075]: ../../0075.%20Sort%20Colors/0075_sortColors.h
+[github-leetcode-0165]: ../../0165.%20Compare%20Version%20Numbers/0165_compareVersion.h
