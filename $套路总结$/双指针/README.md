@@ -9,6 +9,7 @@
 |[151. 反转字符串中的单词][github-leetcode-0151]|双指针：right从末尾开始逆向扫描，指向一个单词的末字符；left寻找right所指向单词的左边界；|
 |[165. 比较版本号][github-leetcode-0165]|双指针：以点号界定区间并提取数字|
 |287. 寻找重复数|环路检测：把数组的`value`作为下一步的`index`，可以把数组串成一个链表。|
+|[443. 压缩字符串][github-leetcode-0443]|双指针：left指向一串重复字符的首个字符；right指向下一串重复字符的首个字符；另有w指针，指示待写入的位置；|
 |[468. 验证IP地址][github-leetcode-0468]|双指针last/cur：last的初值为-1；cur的终值为queryIP.size()；这样可以对IP地址划分区间；|
 |[LCR 181. 字符串中的单词反转][github-leetcode-LCR181]|双指针扫描字符串，并用作界定符；|
 
@@ -94,3 +95,4 @@ while (fast != nullptr && fast->next != nullptr) {
 [github-leetcode-0075]: ../../0075.%20Sort%20Colors/0075_sortColors.h
 [github-leetcode-0165]: ../../0165.%20Compare%20Version%20Numbers/0165_compareVersion.h
 [github-leetcode-0151]: ../../0151.%20Reverse%20Words%20in%20a%20String/0151_reverseWords.h
+[github-leetcode-0443]: ../../0443.%20String%20Compression/0443_compress.h
