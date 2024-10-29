@@ -1,47 +1,35 @@
-#pragma once
+ï»¿#pragma once
 #include <vector>
 using namespace std;
 
 /*
-162. Ñ°ÕÒ·åÖµ
-·åÖµÔªËØÊÇÖ¸ÆäÖµÑÏ¸ñ´óÓÚ×óÓÒÏàÁÚÖµµÄÔªËØ¡£
-¸øÄãÒ»¸öÕûÊýÊý×é nums£¬ÕÒµ½·åÖµÔªËØ²¢·µ»ØÆäË÷Òý¡£Êý×é¿ÉÄÜ°üº¬¶à¸ö·åÖµ£¬ÔÚÕâÖÖÇé¿öÏÂ£¬·µ»Ø ÈÎºÎÒ»¸ö·åÖµ ËùÔÚÎ»ÖÃ¼´¿É¡£
-Äã¿ÉÒÔ¼ÙÉè nums[-1] = nums[n] = -¡Þ ¡£
-Äã±ØÐëÊµÏÖÊ±¼ä¸´ÔÓ¶ÈÎª O(log n) µÄËã·¨À´½â¾ö´ËÎÊÌâ¡£
-
-Ë¼Â··ÖÎö£º
-¼ûµ½Ê±¼ä¸´ÔÓ¶ÈÎª O(log n)£¬¾ÍÒªÁªÏëµ½¶þ·Ö²éÕÒ·¨¡£
-Ã»´í£¬ÎÞÐòµÄÊý×éÒ²¿ÉÒÔÊ¹ÓÃ¶þ·Ö²éÕÒ·¨£»ÒòÎªÌâÄ¿ÒªÇó·µ»Ø¡°ÈÎºÎÒ»¸ö·åÖµ¡±£¬Ö»ÐèÒªºÍ×óÓÒµÄÁÚ¾Ó±È½Ï¼´¿É¡£
-ÄÑµã£º¶ÔÓÚleftºÍrightµÄµü´ú£¬rightÒªÏò×ó¶à×ßÒ»²½£»leftÒªÏòÓÒ¶à×ßÒ»²½£»Ö»ÓÐÒ»¸ö¶à×ßÒ²ÐÐ£¬Á½¸ö¶¼²»¶à×ß£¬»áÏÝÈëËÀÑ­»·£¡
-
-ÓÅ»¯µã£º
-1. Ê×ÏÈ¿´Ê×Ä©ÔªËØÊÇ²»ÊÇ·åÖµ£¬Èç¹ûÃÉµ½ÁË£¬¾ÍÊÇ³£ÊýÊ±¼ä¸´ÔÓ¶È£»
+162. å¯»æ‰¾å³°å€¼
+å³°å€¼å…ƒç´ æ˜¯æŒ‡å…¶å€¼ä¸¥æ ¼å¤§äºŽå·¦å³ç›¸é‚»å€¼çš„å…ƒç´ ã€‚
+ç»™ä½ ä¸€ä¸ªæ•´æ•°æ•°ç»„ numsï¼Œæ‰¾åˆ°å³°å€¼å…ƒç´ å¹¶è¿”å›žå…¶ç´¢å¼•ã€‚æ•°ç»„å¯èƒ½åŒ…å«å¤šä¸ªå³°å€¼ï¼Œåœ¨è¿™ç§æƒ…å†µä¸‹ï¼Œè¿”å›ž ä»»ä½•ä¸€ä¸ªå³°å€¼ æ‰€åœ¨ä½ç½®å³å¯ã€‚
+ä½ å¯ä»¥å‡è®¾ nums[-1] = nums[n] = -âˆž ã€‚
+ä½ å¿…é¡»å®žçŽ°æ—¶é—´å¤æ‚åº¦ä¸º O(log n) çš„ç®—æ³•æ¥è§£å†³æ­¤é—®é¢˜ã€‚
 */
-class Solution_0162 {
+
+/*
+æ€è·¯åˆ†æžï¼šäºŒåˆ†æŸ¥æ‰¾
+è§åˆ°O(log n)çš„æ—¶é—´å¤æ‚åº¦ï¼Œå°±è¦è”æƒ³åˆ°äºŒåˆ†æŸ¥æ‰¾ï¼
+*/
+class Solution {
 public:
     int findPeakElement(vector<int>& nums)
     {
-        size_t n = nums.size();
-        // ±ß½ç´¦Àí£º¿´¿´Ê×½ÚµãÊÇ²»ÊÇ·åÖµ
-        if (n == 1 || nums[0] > nums[1]) {
-            return 0;
-        }
-        // ±ß½ç´¦Àí£º¿´¿´Ä©½ÚµãÊÇ²»ÊÇ·åÖµ
-        if (nums[n - 2] < nums[n - 1]) {
-            return n - 1;
-        }
-        // ÕÛ°ë²éÕÒ
-        size_t left = 1, right = n - 2, mid;
-        while (left < right) {
-            mid = (left + right) / 2;
-            if (nums[mid - 1] < nums[mid] && nums[mid] > nums[mid + 1]) {
-                return mid;
-            } else if (nums[mid - 1] > nums[mid]) {
-                right = mid - 1; // rightÏò×ó¶à×ßÒ»²½
+        int n = nums.size();
+        int left = 0, right = n - 1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2; // äºŒåˆ†æŸ¥æ‰¾æ±‚ä¸­å€¼çš„æ ‡å‡†å†™æ³•
+            if (mid > 0 && nums[mid] < nums[mid - 1]) { // å·¦è¾¹æœ‰å€¼ä¸”å°äºŽå·¦è¾¹
+                right = mid - 1;
+            } else if (mid < n - 1 && nums[mid] < nums[mid + 1]) { // å³è¾¹æœ‰å€¼ä¸”å°äºŽå³è¾¹
+                left = mid + 1;
             } else {
-                left = mid + 1; // leftÏòÓÒ¶à×ßÒ»²½
+                return mid;
             }
         }
-        return left; // ´ËÊ±left/rightÖØºÏ
+        return -1;
     }
 };
