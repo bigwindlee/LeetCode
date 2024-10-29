@@ -32,8 +32,7 @@ public:
         }
 
         // 优化2：字符频率超出
-        unordered_map<char, int> freq1;
-        unordered_map<char, int> freq2;
+        unordered_map<char, int> freq1, freq2;
         for (int i = 0; i < m; ++i) {
             for (int j = 0; j < n; ++j) {
                 ++freq1[board[i][j]];
