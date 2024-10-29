@@ -1,6 +1,7 @@
 |LeetCode|要点|
 |-------------------------------------|-------------------------------------|
 |[4. 寻找两个正序数组的中位数][github-leetcode-0004]|二分查找确定i值：画一条红线，nums1有i个元素在红线左边，nums2有j个元素在红线左边；|
+|[162. 寻找峰值][github-leetcode-0162]|二分查找|
 |[410. 分割数组的最大值][github-leetcode410]|**二分查找**搜索最大子数组和的最小可能值；**贪心算法**验证每次二分查找中间值是否是一个合法的解。|
 |[793. 阶乘函数后 K 个零][github-leetcode793]|查找一个mid，使得`mid!`中包含的质因子5的个数等于k；|
 
@@ -86,5 +87,6 @@
 
 
 [github-leetcode-0004]: ../../0004.%20Median%20of%20Two%20Sorted%20Arrays/0004_findMedianSortedArrays.h
+[github-leetcode-0162]: ../../0162.%20Find%20Peak%20Element/0162_findPeakElement.h
 [github-leetcode410]: ../../0410.%20Split%20Array%20Largest%20Sum/0410_splitArray.h
 [github-leetcode793]: ../../0793.%20Preimage%20Size%20of%20Factorial%20Zeroes%20Function/0793_preimageSizeFZF.h
