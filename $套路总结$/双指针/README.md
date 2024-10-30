@@ -6,6 +6,7 @@
 |[71. 简化路径][github-leetcode-0071]|双指针+栈：使用双指针界定由'/'分割的segment；用栈处理两个点 '..' 将目录切换到上一级；|
 |[75. 颜色分类][github-leetcode-0075]|一趟扫描，扫描过程中通过通过2个指针p0和p2定位，把0往前搬运，把2往后搬运。；|
 |[88. 合并两个有序数组][github-leetcode-0088]|三指针逆向扫描/填充|
+|[125. 验证回文串][github-leetcode-0125]|双指针：分别从首尾对向移动，跳过非字母数字字符；|
 |[151. 反转字符串中的单词][github-leetcode-0151]|双指针：right从末尾开始逆向扫描，指向一个单词的末字符；left寻找right所指向单词的左边界；|
 |[165. 比较版本号][github-leetcode-0165]|双指针：以点号界定区间并提取数字|
 |287. 寻找重复数|环路检测：把数组的`value`作为下一步的`index`，可以把数组串成一个链表。|
@@ -93,6 +94,7 @@ while (fast != nullptr && fast->next != nullptr) {
 [github-leetcode-0088]: ../../0088.%20Merge%20Sorted%20Array/0088_merge.h
 [github-leetcode-0026]: ../../0026.%20Remove%20Duplicates%20from%20Sorted%20Array/0026_removeDuplicates.h
 [github-leetcode-0075]: ../../0075.%20Sort%20Colors/0075_sortColors.h
-[github-leetcode-0165]: ../../0165.%20Compare%20Version%20Numbers/0165_compareVersion.h
+[github-leetcode-0125]: ../../0125.%20Valid%20Palindrome/0125_isPalindrome.h
 [github-leetcode-0151]: ../../0151.%20Reverse%20Words%20in%20a%20String/0151_reverseWords.h
+[github-leetcode-0165]: ../../0165.%20Compare%20Version%20Numbers/0165_compareVersion.h
 [github-leetcode-0443]: ../../0443.%20String%20Compression/0443_compress.h
