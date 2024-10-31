@@ -11,6 +11,7 @@
 |[116. 填充每个节点的下一个右侧节点指针][github-leetcode-0116]|二叉树BFS；下一层入队列的顺序（先右后左）；|
 |[117. 填充每个节点的下一个右侧节点指针 II][github-leetcode-0117]|二叉树BFS；下一层入队列的顺序（先右后左）；|
 |[124. 二叉树中的最大路径和][github-leetcode-0124]|dfs通过返回值向父节点提供收益；分开处理`最大路径能否向父节点延伸的情况`。用一个全局变量记录；|
+|[173. 二叉搜索树迭代器][github-leetcode-0173]|用栈模拟二叉树中序遍历的过程；|
 |[235. 二叉搜索树的最近公共祖先][github-leetcode-0235]|BST: 同一阵营则尝试下降；不同阵营则立刻返回；|
 |[236. 二叉树的最近公共祖先][github-leetcode-0236]|LCA（Lowest Common Ancestor）算法；这是一个经典的递归算法；通过递归函数的返回值上浮；|
 |[285. 二叉搜索树中的中序后继][github-leetcode-0285]|充分利用BST的特点进行二分查找；比给定值大的作为候选，逐步刷新；|
@@ -117,3 +118,4 @@ LeetCode 中有大量与二叉树（Binary Tree）相关的问题，这些问题
 [github-leetcode-0116]: ../../0116.%20Populating%20Next%20Right%20Pointers/0116_connect.h
 [github-leetcode-0117]: ../../0117.%20Populating%20Next%20Right%20Pointers%20II/0117_connect.h
 [github-leetcode-0103]: ../../0103.%20Binary%20Tree%20Zigzag%20Level%20Order%20Traversal/0103_zigzagLevelOrder.h
+[github-leetcode-0173]: ../../0173.%20Binary%20Search%20Tree%20Iterator/0173_BSTIterator.h
