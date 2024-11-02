@@ -22,7 +22,7 @@ public:
     int minimumMoves(vector<int>& arr)
     {
         int n = arr.size();
-        int dp[101][101];
+        int dp[100][100]; // 1 <= arr.length <= 100
 
         // 长度为1的区间必然是回文，代价是1
         for (int i = 0; i < n; ++i) {
