@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -41,11 +41,12 @@ public:
             int i = 0, j = i + len - 1; // 双指针：区间首尾下标
             while (j < n) {
                 dp[i][j] = len; // 初始为最坏的情况：分别删除每个字符
-                // 分成2个区间：[i, k]，[k+1, j]；暴搜所有的区间划分方法
-                for (int k = 0; k < len - 1; ++k) { 
+                // 分成2个区间：[i, k]，[k+1, j]；暴搜所有的2区间划分方法
+                for (int k = 0; k < len - 1; ++k) {
                     dp[i][j] = min(dp[i][j], dp[i][i + k] + dp[i + k + 1][j]);
                 }
-                if (arr[i] == arr[j]) { // 首尾字符相同，区间内收
+                // 首尾字符相同，区间内收；只能作为备选，并不一定优于2区间划分方法
+                if (arr[i] == arr[j]) {
                     dp[i][j] = min(dp[i][j], dp[i + 1][j - 1]);
                 }
 
