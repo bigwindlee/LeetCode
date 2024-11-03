@@ -25,7 +25,7 @@ public:
     {
         string ans;
         while (columnNumber) {
-            ans.push_back((columnNumber - 1) % 26 + 'A');
+            ans.push_back((columnNumber - 1) % 26 + 'A'); // 顺序相反不用怕，一会儿reverse
             columnNumber = (columnNumber - 1) / 26;
         }
         reverse(ans.begin(), ans.end());
