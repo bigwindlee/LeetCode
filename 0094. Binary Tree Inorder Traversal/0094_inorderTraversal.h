@@ -1,11 +1,14 @@
 ﻿#pragma once
 #include "TreeNode.h"
+#include <functional>
 #include <stack>
 #include <vector>
 using namespace std;
 
 /*
 思路分析1：非递归版，使用栈
+要点：
+    1）沿着左子树压栈到尽头，然后弹出，并把弹出节点的右子树压栈；
 */
 class Solution_0094_01 {
 public:
@@ -48,5 +51,31 @@ public:
         dfs(root->left, ans);
         ans.push_back(root->val);
         dfs(root->right, ans);
+    }
+};
+
+/*
+思路3：显示指定类型的lambda表达式
+要点：
+    1）如果要单独指定捕获的符号，必须指定dfs自身；
+*/
+class Solution_0094_03 {
+public:
+    vector<int> inorderTraversal(TreeNode* root)
+    {
+        vector<int> ans;
+
+        // 如果要单独指定捕获的符号，必须指定dfs自身；
+        function<void(TreeNode*)> dfs = [&ans, &dfs](TreeNode* root) {
+            if (!root) {
+                return;
+            }
+            dfs(root->left);
+            ans.push_back(root->val);
+            dfs(root->right);
+        };
+
+        dfs(root);
+        return ans;
     }
 };
