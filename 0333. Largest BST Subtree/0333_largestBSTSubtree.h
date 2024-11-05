@@ -69,7 +69,7 @@ public:
                 ans = max(ans, count);
                 return Node { l, r, count };
             }
-            return Node { -1, -1, -1 }; // count设为-1标记不是BST，l,r多少都可以
+            return Node { -1, -1, -1 }; // count设为-1标记不是BST
         };
 
         dfs(root);
@@ -78,7 +78,7 @@ public:
 
 private:
     struct Node {
-        int l, r, count;
+        int l, r, count; // count设置为-1表示以当前节点为根的子树不是BST，此时忽略掉l/r；
     };
 };
 
