@@ -4,6 +4,7 @@
 | [72. 编辑距离][github-leetcode-72] | `dp[i][j]`表示word1的前`i`个字符转换成word2的前`j`个字符所用的步数 |
 |[174. 地下城游戏][github-leetcode-0174]|二维DP + 逆向推导；至少一点血量；|
 |[647. 回文子串][github-leetcode647]|如果`s[i: j]`的首尾字符相同，那么它是不是回文，取决于它的子状态`s[i+1: j-1]`是不是回文。|
+|[1092. 最短公共超序列][github-leetcode-1092]|dp[i][j]表示s的前i个字符和t的前j字符构成的最短公共超序列的长度|
 |[1143. 最长公共子序列][github-leetcode1143]|`dp[i][j]` 表示字符串`text1`的前`i`个字符 和 `text2`的前`j`个字符的最长公共子序列的长度。|
 |[1246. 删除回文子数组][github-leetcode-1246]|区间DP：分别分成长度为1/2/3的区间进行讨论|
 |[1312. 成为回文串的最少插入次数][github-leetcode1312]|定义 dp[i][j] 为：把子串 s[i...j] 转换为回文串所需的最少插入次数。|
@@ -86,3 +87,4 @@
 [github-leetcode1143]: https://github.com/bigwindlee/LeetCode/tree/master/1143.%20Longest%20Common%20Subsequence
 [github-leetcode1312]: https://github.com/bigwindlee/LeetCode/blob/master/1312.%20Minimum%20Insertion%20Steps/1312_minInsertions.h
 [github-leetcode-1246]: ../../1246.%20Palindrome%20Removal/1246_minimumMoves.h
+[github-leetcode-1092]: ../../1092.%20Shortest%20Common%20Supersequence/1092_shortestCommonSupersequence.h
