@@ -1,32 +1,34 @@
-#pragma once
+ï»¿#pragma once
 #include <vector>
 using namespace std;
 
 /*
-198. ´ò¼Ò½ÙÉá
-ÄãÊÇÒ»¸ö×¨ÒµµÄÐ¡Íµ£¬¼Æ»®ÍµÇÔÑØ½ÖµÄ·¿ÎÝ¡£Ã¿¼ä·¿ÄÚ¶¼²ØÓÐÒ»¶¨µÄÏÖ½ð£¬Ó°ÏìÄãÍµÇÔµÄÎ¨Ò»ÖÆÔ¼ÒòËØ¾ÍÊÇÏàÁÚµÄ·¿ÎÝ×°ÓÐÏà»¥Á¬Í¨µÄ·ÀµÁÏµÍ³£¬Èç¹ûÁ½¼äÏàÁÚµÄ·¿ÎÝÔÚÍ¬Ò»ÍíÉÏ±»Ð¡Íµ´³Èë£¬ÏµÍ³»á×Ô¶¯±¨¾¯¡£
-¸ø¶¨Ò»¸ö´ú±íÃ¿¸ö·¿ÎÝ´æ·Å½ð¶îµÄ·Ç¸ºÕûÊýÊý×é£¬¼ÆËãÄã ²»´¥¶¯¾¯±¨×°ÖÃµÄÇé¿öÏÂ £¬Ò»Ò¹Ö®ÄÚÄÜ¹»ÍµÇÔµ½µÄ×î¸ß½ð¶î¡£
-
-Ë¼Â··ÖÎö£º
-ÌâÄ¿µÄÒâË¼ÊÇ´Ó¸ø¶¨Êý×éÖÐÕÒ³ö²»Á¬ÐøµÄÊý£¬Ê¹ÆäºÍ×î´ó¡£
-¶ÔÓÚÊý×éÖÐµÄÈÎºÎÒ»¸öÊý£¬¶¼Ö»ÓÐ2ÖÐ¿ÉÄÜ£¬ÔÚ¡¢»òÕß²»ÔÚ×îÖÕµÄ×î´óºÍÐòÁÐÖÐ¡£ÂíÉÏÁªÏëµ½ 0-1 ±³°üÎÊÌâ¡£¾­µäDPÎÊÌâ¡£
-dp[i]±íÊ¾ÏÂ±ê±ÕÇø¼ä[0, i]µÄËùÓÐÊýµÄ²»Á¬Ðø×î´óºÍ£»ÄÇÃ´ÎÊÌâµÄºËÐÄÊÇ£¬dp[i]ºÍdp[i-1]£¬ÉõÖÁdp[i-2]Ö®¼äÊÇÊ²Ã´¹ØÏµ£¿
-´ËÊ±nums[i]Ö»ÓÐ2ÖÐ¿ÉÄÜ£¬£¨ÔÚ or ²»ÔÚ£©×î´óºÍÐòÁÐÖÐ£»
-1£©Èç¹ûÔÚ£¬ÄÇÃ´nums[i-1]¿Ï¶¨²»ÔÚ£¨ÒòÎª²»ÄÜÁ¬Ðø£©£¬´ËÊ±dp[i]¾ÍµÈÓÚ dp[i-2] + nums[i]
-2£©Èç¹û²»ÔÚ£¬´ËÊ±dp[i]¾ÍµÈÓÚ dp[i-1]
-dp[i]È¡2ÖÐÇé¿öÖÐµÄ×î´óÖµ£¬ËùÒÔÕÒµ½ÁËµÝÍÆ¹«Ê½£ºdp[i] = max(dp[i - 1], dp[i - 2] + nums[i])
+198. æ‰“å®¶åŠ«èˆ
+ä½ æ˜¯ä¸€ä¸ªä¸“ä¸šçš„å°å·ï¼Œè®¡åˆ’å·çªƒæ²¿è¡—çš„æˆ¿å±‹ã€‚æ¯é—´æˆ¿å†…éƒ½è—æœ‰ä¸€å®šçš„çŽ°é‡‘ï¼Œå½±å“ä½ å·çªƒçš„å”¯ä¸€åˆ¶çº¦å› ç´ å°±æ˜¯ç›¸é‚»çš„æˆ¿å±‹è£…æœ‰ç›¸äº’è¿žé€šçš„é˜²ç›—ç³»ç»Ÿï¼Œ
+å¦‚æžœä¸¤é—´ç›¸é‚»çš„æˆ¿å±‹åœ¨åŒä¸€æ™šä¸Šè¢«å°å·é—¯å…¥ï¼Œç³»ç»Ÿä¼šè‡ªåŠ¨æŠ¥è­¦ã€‚
+ç»™å®šä¸€ä¸ªä»£è¡¨æ¯ä¸ªæˆ¿å±‹å­˜æ”¾é‡‘é¢çš„éžè´Ÿæ•´æ•°æ•°ç»„ï¼Œè®¡ç®—ä½  ä¸è§¦åŠ¨è­¦æŠ¥è£…ç½®çš„æƒ…å†µä¸‹ ï¼Œä¸€å¤œä¹‹å†…èƒ½å¤Ÿå·çªƒåˆ°çš„æœ€é«˜é‡‘é¢ã€‚
 */
-class Solution_0198 {
+
+/*
+æ€è·¯åˆ†æžï¼šä¸€ç»´DP
+dp[i]è¡¨ç¤º`å‰iå®¶`è¢«å·çš„æœ€å¤§é‡‘é¢ï¼›å‰iå®¶çš„æœ«ä½æ˜¯nums[i-1]ï¼›
+åˆ†nums[i-1]è¢«å·ã€ä¸è¢«å·ä¸¤ç§æƒ…å†µï¼Œåˆ†åˆ«è®¨è®ºdp[i]ä¸Žå·¦è¾¹å»ºç«‹é€’æŽ¨å…¬å¼çš„æƒ…å†µï¼š
+  1ï¼‰å¦‚æžœnums[i-1]ä¸è¢«å·ï¼Œé‚£ä¹ˆdp[i]ç­‰ä»·äºŽdp[i-1]ï¼›
+  2ï¼‰å¦‚æžœnums[i-1]è¢«å·ï¼Œé‚£ä¹ˆnums[i-2]ä¸èƒ½è¢«å·ï¼Œæ‰€ä»¥å‰iå®¶è¢«å·é‡‘é¢ä¸ºï¼šnums[i-1] + dp[i-2]
+å› ä¸ºè¿½æ±‚æœ€å¤§é‡‘é¢ï¼Œæ‰€ä»¥dp[i]å–ä¸¤è€…çš„è¾ƒå¤§å€¼ã€‚
+*/
+class Solution {
 public:
     int rob(vector<int>& nums)
     {
         int n = nums.size();
-        vector<int> dp(n);
-        dp[0] = nums[0];
-        dp[1] = max(nums[0], nums[1]);
-        for (int i = 2; i < n; ++i) {
-            dp[i] = max(dp[i - 1], dp[i - 2] + nums[i]);
+        vector<int> dp(n + 1); // dp[i]è¡¨ç¤º`å‰iå®¶`è¢«å·çš„æœ€å¤§é‡‘é¢ï¼›
+        dp[0] = 0;
+        dp[1] = nums[0];
+        for (int i = 2; i <= n; ++i) {
+            // åˆ†nums[i-1]`è¢«å·`ä¸Ž`ä¸è¢«å·`ä¸¤ç§æƒ…å†µè®¨è®ºï¼Œå¹¶å–äºŒè€…çš„è¾ƒå¤§å€¼ï¼›
+            dp[i] = max(dp[i - 1], nums[i - 1] + dp[i - 2]);
         }
-        return dp[n - 1];
+        return dp[n];
     }
 };
