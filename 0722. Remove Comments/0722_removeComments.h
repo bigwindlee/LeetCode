@@ -17,6 +17,9 @@ using namespace std;
 2）退出多行注释模式；
 3）遇单行注释符，提前结束一行的扫描；
 4）当前非注释，逐个字符收集；
+
+要点：
+    每一个if都要首先判断是否inBlockComment模式
 */
 
 class Solution {
@@ -26,14 +29,8 @@ public:
         vector<string> ans;
         bool inBlockComment = false; // 当前是否在多行注释模式中
         string newLine; // 逐个字符收集每一行的非注释内容
-
         for (const string& line : source) {
-            // 只有在非多行注释模式中，才能清空newLine；
-            // 因为在多行注释模式中，newLine可能包含有效的代码，而且还没有收集完毕，可能要跨行收集。（参见官方case2）
-            if (!inBlockComment) {
-                newLine = "";
-            }
-            for (int i = 0; i < line.length(); ++i) { // 逐个字符扫描
+            for (int i = 0; i < line.size(); ++i) { // 逐个字符扫描
                 if (!inBlockComment && line.substr(i, 2) == "/*") {
                     inBlockComment = true;
                     ++i;
@@ -43,15 +40,14 @@ public:
                 } else if (!inBlockComment && line.substr(i, 2) == "//") {
                     break; // 只有遇到单行注释符，才能提前结束一行的扫描；
                 } else if (!inBlockComment) {
-                    newLine += line[i]; // 逐个字符收集；在遇到多行注释时，可能要跨行收集；
+                    newLine.push_back(line[i]); // 逐个字符收集；在遇到多行注释时，可能要跨行收集；
                 }
             }
-
             if (!inBlockComment && !newLine.empty()) {
                 ans.push_back(newLine);
+                newLine.clear();
             }
         }
-
         return ans;
     }
 };
