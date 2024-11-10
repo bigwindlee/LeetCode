@@ -41,18 +41,20 @@ priority_queue<ListNode*, vector<ListNode*>, comp> q;  // 不需要传入额外�
 
 
 */
+struct cmp {
+    // 小顶堆（默认大顶堆用less，所以小顶堆用greater）
+    bool operator()(ListNode* a, ListNode* b) { return a->val > b->val; }
+};
+
 class Solution {
 public:
     ListNode* mergeKLists(vector<ListNode*>& lists)
     {
-        ListNode dummyHead, *p = &dummyHead;
-        auto cmp = [](ListNode* p1, ListNode* p2) {
-            return p1->val > p2->val; // 小顶堆
-        };
-        priority_queue<ListNode*, vector<ListNode*>, decltype(cmp)> q(cmp);
-        for (ListNode* list : lists) {
-            if (list) {
-                q.push(list);
+        ListNode dummy, *p = &dummy;
+        priority_queue<ListNode*, vector<ListNode*>, cmp> q;
+        for (ListNode* node : lists) {
+            if (node) {
+                q.push(node);
             }
         }
         while (!q.empty()) {
@@ -63,6 +65,6 @@ public:
                 q.push(p->next);
             }
         }
-        return dummyHead.next;
+        return dummy.next;
     }
 };
