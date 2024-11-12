@@ -7,6 +7,7 @@
 |[213. 打家劫舍 II][github-leetcode-0213]|dp[i]表示前i家被偷窃的最高金额；把nums[0]是否被劫的情况分开来处理；|
 |[403. 青蛙过河][github-leetcode-0403]|对于每块石头，如果下一跳有效，则更新下一块石头上能跳的步数（k-1, k, k+1）。|
 |[651. 四个键的键盘][github-leetcode-0651]|dp[i] 为按键 i 次能得到的最多的A的个数；遍历所有的j值，从dp[j]开始复制，选出最大的dp[i]；|
+|[2321. 拼接数组的最大分数][github-leetcode-2321]|差额数组的连续子数组的最大和，就是区间对换能带来的最大收益；|
 |LCR 127. 跳跃训练|跳到第 i 个格子的方法有两种：从第 i-1 个格子跳一步；从第 i-2 个格子跳两步；|
 
 
@@ -26,3 +27,4 @@
 [github-leetcode-0213]: ../../0213.%20House%20Robber%20II/0213_rob.h
 [github-leetcode-0651]: ../../0651.%204%20Keys%20Keyboard
 [github-leetcode-0198]: ../../0198.%20House%20Robber/0198_rob.h
+[github-leetcode-2321]: ../../2321.%20Maximum%20Score%20Of%20Spliced%20Array/2321_maximumsSplicedArray.h
