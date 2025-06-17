@@ -1,5 +1,4 @@
-﻿#pragma once
-#include <algorithm>
+#pragma once
 #include <vector>
 using namespace std;
 
@@ -18,8 +17,9 @@ public:
     {
         vector<int> dp(budget + 1); // dp[j]表示花费为j时对应的最大收益dp[j]；用受限条件做下标！
         for (int i = 0; i < present.size(); ++i) { // 枚举每一支股票
-            for (int j = budget; j >= present[i]; --j) {
-                dp[j] = max(dp[j], dp[j - present[i]] + future[i] - present[i]); // 0-1背包递推公式！
+            int cost = present[i], profit = future[i] - present[i];
+            for (int j = budget; j >= cost && profit > 0; --j) {
+                dp[j] = max(dp[j], dp[j - cost] + profit); // 0-1背包递推公式！
             }
         }
         return dp[budget];
