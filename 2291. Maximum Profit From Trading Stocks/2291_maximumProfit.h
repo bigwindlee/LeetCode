@@ -22,6 +22,6 @@ public:
                 dp[j] = max(dp[j], dp[j - present[i]] + future[i] - present[i]); // 0-1背包递推公式！
             }
         }
-        return *max_element(dp.begin(), dp.end());
+        return dp[budget];
     }
 };
