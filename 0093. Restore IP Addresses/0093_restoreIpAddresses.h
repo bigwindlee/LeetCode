@@ -19,40 +19,40 @@ public:
     vector<string> restoreIpAddresses(string s)
     {
         vector<string> ans;
-        vector<string> path; //  保存ip地址的4个section，便于回溯撤销；
+        vector<string> path; // 保存试探过程中的每一节ip地址，使用vector便于撤销；
 
         function<void(int, int)> dfs = [&](int i, int deep) {
+            // Step 1: 剪枝不合法的搜索路径
             int remain = s.size() - i; // 剩余字符数
             if (remain <= 0) {
                 return;
             }
 
-            // 最后一个section，递归出口。
+            // Step 2: 如何判断到达叶子节点（递归出口）：固定搜索深度使用depth递减；
             if (deep == 3) {
-                // 剩余字符超过3个，或者包含前导0，不合法。
                 if (remain > 3 || (remain > 1 && s[i] == '0')) {
                     return;
                 }
-
                 string section = s.substr(i, remain);
                 if (stoi(section) > 255) {
                     return;
                 }
+                // 收集合法IP地址
                 ans.push_back(path[0] + "." + path[1] + "." + path[2] + "." + section);
                 return;
             }
 
-            // IP地址每节长度为1~3，对应3个搜索方向：
+            // Step 3: 穷举搜索方向
             for (int len = 1; len <= min(3, remain); ++len) {
+                string section = s.substr(i, len); // 试探性取得一节IP地址
                 if (len > 1 && s[i] == '0') {
-                    break; // 前导0不合法
+                    break;
                 }
-                string section = s.substr(i, len);
                 if (stoi(section) > 255) {
                     break;
                 }
-                path.push_back(section);
-                dfs(i + len, deep + 1);
+                path.push_back(section); // 试探性收集一节IP地址
+                dfs(i + len, deep + 1); // 深度搜索
                 path.pop_back(); // 回溯撤销
             }
         };
