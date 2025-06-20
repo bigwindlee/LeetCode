@@ -17,6 +17,7 @@ using namespace std;
   - 降序排列可以尽快的触发剪枝；
   - 把每条搜索路径上最大的bucket放在参数中传递下去，到达叶子节点时就是一个合法的备选ans；
   - 搜索过程中发现当前搜索路径中，最大的bucket已经超出了合法的备选ans，立刻剪枝！
+  - 回溯过程中发现当前bucket为空，那么没必要尝试下一个bucket，因为最终每个桶都至少有一个球（k <= jobs.length）。
 */
 class Solution_1723 {
 public:
