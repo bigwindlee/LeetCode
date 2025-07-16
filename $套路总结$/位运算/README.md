@@ -4,6 +4,7 @@
 |[137. 只出现一次的数字 II](https://github.com/bigwindlee/LeetCode/blob/master/0137.%20Single%20Number%20II/0137_singleNumber.h)    |统计每个比特位的1比特出现的次数，对3取模。|
 |[191. 位1的个数][github-leetcode-0191]|位运算：`n&(n-1)`干掉`lowbit`|
 |[266. 回文排列][github-leetcode-0266]|位运算：小写字母映射成int整型的比特位置索引；偶数次与1比特异或操作结果为0；|
+|476. 数字的补数|从高比特位到低比特位的方向，把连续的`1`比特清零；|
 
 
 # C++ 位运算技巧总结
