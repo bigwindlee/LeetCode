@@ -6,6 +6,7 @@
 |[266. 回文排列][github-leetcode-0266]|位运算：小写字母映射成int整型的比特位置索引；偶数次与1比特异或操作结果为0；|
 |476. 数字的补数|从高比特位到低比特位的方向，把连续的`1`比特清零；|
 |2571. 将整数减少到零需要的最少操作数|LOWBIT：通过`n & -n`提取lowbit；通过加/减lowbit消除连续的`1`比特；|
+|[3370. 仅含置位位的最小整数][github-leetcode-3370]|位操作：确定最高比特位后，把右边的低比特位全部置1；|
 |面试题 05.06. 整数转换|LOWBIT：统计一个整数的二进制表示中`1`比特的个数，技巧是使用`n&(n-1)`依次干掉lowbit；|
 |[面试题 05.07. 配对交换][github-leetcode-I0507]|异或操作：与1异或翻转比特位；|
 |面试题 16.07. 最大数值|右移操作：提取表示符号的最高比特位，并把它映射成0（正数）或-1（负数）；|
@@ -95,3 +96,4 @@ C++ 中的位运算是一种非常高效的操作，适合用于解决涉及二�
 [github-leetcode-0191]: ../../0191.%20Number%20of%201%20Bits/0191_hammingWeight.h
 [github-leetcode-0266]: ../../0266.%20Palindrome%20Permutation/0266_canPermutePalindrome.h
 [github-leetcode-I0507]: ../../INTERVIEW05.07.%20Exchange%20LCCI/interview.05.07.h
+[github-leetcode-3370]: ../../3370.%20Smallest%20Number%20With%20All%20Set%20Bits/3370_smallestNumber.h
