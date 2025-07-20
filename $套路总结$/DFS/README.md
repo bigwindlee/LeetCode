@@ -1,7 +1,8 @@
 | LeetCode | 要点 |
 | ----------- | ----------- |
 |[200. 岛屿数量][github-leetcode-0200]|二维矩阵DFS：在搜索的过程中将小岛翻转，避免visited矩阵的开销；|
-| [2571. 将整数减少到零需要的最少操作数][github-leetcode-2571] |位运算 + DFS；搜索方向：+/- lowbit|
+|[397. 整数替换][github-leetcode-0397]|DFS：如果n是奇数，有2个搜索方向：用n+1或者n-1替换n；选择其中最小的替换次数；|
+|[2571. 将整数减少到零需要的最少操作数][github-leetcode-2571] |位运算 + DFS；搜索方向：+/- lowbit|
 |[3040. 相同分数的最大操作数目 II][github-leetcode-3040]|记忆化DFS|
 
 
@@ -104,3 +105,4 @@ DFS 是图和树遍历中的经典算法，适用于许多需要深层探索和�
 [github-leetcode-2571]: ../../2571.%20Minimum%20Operations%20to%20Reduce/2571_minOperations.h
 [github-leetcode-0200]: ../../0200.%20Number%20of%20Islands/0200_numIslands.h
 [github-leetcode-3040]: ../../3040.%20Maximum%20Number%20of%20Operations/3040_maxOperations.h
+[github-leetcode-0397]: ../../0397.%20Integer%20Replacement/0397_integerReplacement.h
